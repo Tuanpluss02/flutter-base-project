@@ -1,0 +1,9 @@
+{
+  "APP_ENV": "prod",
+  "API_BASE_URL": "https://api.pristie.example",
+  "APP_NAME": "Pristie",
+  "ENABLE_LOGGING": false,
+  "CONNECT_TIMEOUT_MS": 15000,
+  "RECEIVE_TIMEOUT_MS": 30000,
+  "SEND_TIMEOUT_MS": 30000
+}
