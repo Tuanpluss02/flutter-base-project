@@ -30,4 +30,5 @@ Offline-first là module Phase 2, không thuộc scaffold v1. Bản Phase 2 riê
 
 ## Kế hoạch triển khai
 
-[Flutter Core Base — Workstream plan](../plans/2026-10-30-flutter-core-base-workstreams.md) mô tả 5 workstream, phụ thuộc và gate trước khi bắt đầu code.
+- [Flutter Core Base — Workstream plan](../plans/2026-10-30-flutter-core-base-workstreams.md) mô tả 5 workstream, phụ thuộc và gate trước khi bắt đầu code.
+- [Flutter Core Base — Implementation plan](../plans/2026-10-31-flutter-core-base-implementation.md) mô tả chi tiết từng task, execution model với Orca và acceptance criteria.

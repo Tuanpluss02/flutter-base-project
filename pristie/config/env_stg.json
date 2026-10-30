@@ -1,0 +1,9 @@
+{
+  "APP_ENV": "stg",
+  "API_BASE_URL": "https://api.stg.pristie.example",
+  "APP_NAME": "Pristie Staging",
+  "ENABLE_LOGGING": true,
+  "CONNECT_TIMEOUT_MS": 15000,
+  "RECEIVE_TIMEOUT_MS": 30000,
+  "SEND_TIMEOUT_MS": 30000
+}
