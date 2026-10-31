@@ -8,6 +8,9 @@ abstract interface class AuthSessionController implements SessionStateSink {
   /// Stream broadcasting authentication state changes.
   Stream<AuthState> get authStateStream;
 
+  /// Current cached [AuthState].
+  AuthState get currentAuthState;
+
   /// Monotonically increasing epoch counter bumped on every session transition.
   int get sessionEpoch;
 

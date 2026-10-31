@@ -26,7 +26,7 @@ feature_dirs=(lib/src/features/*/domain lib/src/features/*/presentation)
 shopt -u nullglob
 
 if [ ${#feature_dirs[@]} -gt 0 ]; then
-  matches=$(rg -n "package:pristie/src/features/" "${feature_dirs[@]}" 2>/dev/null | (rg -v "features/.*_template" || true))
+  matches=$( (rg -n "package:pristie/src/features/" "${feature_dirs[@]}" 2>/dev/null || true) | (rg -v "features/.*_template" || true) )
   if [ -n "$matches" ]; then
     echo "$matches" >&2
     echo "ERROR: Features must not import other features in domain or presentation!" >&2
