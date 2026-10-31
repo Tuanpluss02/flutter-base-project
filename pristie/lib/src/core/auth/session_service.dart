@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:pristie/src/core/auth/auth_coordinator.dart';
 import 'package:pristie/src/core/auth/auth_session_controller.dart';
 import 'package:pristie/src/core/auth/auth_state.dart';
 import 'package:pristie/src/core/result/result.dart';
@@ -94,16 +95,31 @@ final class SessionService implements AuthSessionController {
   }
 
   @override
-  Future<Result<void>> logout() async {
+  Future<Result<void>> logout([LogoutRevoker? revoker]) async {
     _sessionEpoch++;
     _isRequestGateOpen = false;
     final beginResult = await tokens.beginLogout();
     switch (beginResult) {
       case Err(:final failure):
         _updateState(AuthState.locked);
-        return Result.err(failure);
+        final clearResult = await tokens.clearSession();
+        switch (clearResult) {
+          case Ok():
+            return Result.err(failure);
+          case Err(failure: final clearFailure):
+            return Result.err(clearFailure);
+        }
       case Ok():
         _updateState(AuthState.locked);
+        if (revoker != null) {
+          final tokenResult = await tokens.readRefreshTokenForRevocation();
+          if (tokenResult is Ok<String?> && tokenResult.data != null) {
+            final revokeResult = await revoker.revoke(tokenResult.data!);
+            if (revokeResult is Err) {
+              return revokeResult;
+            }
+          }
+        }
         final clearResult = await tokens.clearSession();
         switch (clearResult) {
           case Ok():
@@ -124,7 +140,13 @@ final class SessionService implements AuthSessionController {
     switch (beginResult) {
       case Err(:final failure):
         _updateState(AuthState.locked);
-        return Result.err(failure);
+        final clearResult = await tokens.clearSession();
+        switch (clearResult) {
+          case Ok():
+            return Result.err(failure);
+          case Err(failure: final clearFailure):
+            return Result.err(clearFailure);
+        }
       case Ok():
         _updateState(AuthState.locked);
         final clearResult = await tokens.clearSession();
