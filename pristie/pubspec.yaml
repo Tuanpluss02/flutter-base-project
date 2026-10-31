@@ -28,6 +28,8 @@ dependencies:
   intl: 0.20.3
   uuid: 4.6.0
   crypto: 3.0.8
+  sqflite_sqlcipher: 3.4.1
+  path_provider: 2.1.6
 
 dev_dependencies:
   flutter_test:
