@@ -1,0 +1,26 @@
+name: offline_spike
+description: Offline database spike harness evaluating drift and sqflite_sqlcipher
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ">=3.13.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  drift: 2.35.3
+  sqlite3: 3.8.0
+  sqflite_sqlcipher: 3.4.1
+  sqflite_common: ^2.5.0
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 6.0.0
+
+hooks:
+  user_defines:
+    sqlite3:
+      source: sqlite3mc
