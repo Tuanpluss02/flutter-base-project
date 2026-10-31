@@ -1,0 +1,52 @@
+{
+  "app": {
+    "name": "Pristie"
+  },
+  "common": {
+    "retry": "Thử lại",
+    "cancel": "Hủy",
+    "loading": "Đang tải",
+    "empty": "Chưa có nội dung"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "submit": "Đăng nhập",
+    "invalidCredentials": "Email hoặc mật khẩu không đúng"
+  },
+  "home": {
+    "title": "Trang chủ",
+    "loadMore": "Tải thêm"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "theme": "Giao diện",
+    "language": "Ngôn ngữ",
+    "logout": "Đăng xuất",
+    "logoutConfirm": "Bạn có chắc muốn đăng xuất?"
+  },
+  "error": {
+    "network": "Không có kết nối mạng. Kiểm tra kết nối và thử lại.",
+    "timeout": "Yêu cầu đã hết thời gian chờ. Hãy thử lại.",
+    "unauthorized": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+    "forbidden": "Bạn không có quyền thực hiện thao tác này.",
+    "notFound": "Không tìm thấy nội dung bạn cần.",
+    "conflict": "Dữ liệu đã thay đổi. Hãy làm mới và thử lại.",
+    "validation": "Vui lòng kiểm tra lại thông tin đã nhập.",
+    "rateLimit": "Quá nhiều yêu cầu. Đợi một lát rồi thử lại.",
+    "server": "Đã xảy ra lỗi từ phía máy chủ. Hãy thử lại sau.",
+    "payloadTooLarge": "Tệp đã chọn quá lớn.",
+    "parse": "Không thể đọc phản hồi. Hãy thử lại.",
+    "localPersistence": "Không thể lưu thay đổi trên thiết bị này.",
+    "unknown": "Đã xảy ra lỗi. Hãy thử lại."
+  },
+  "offline": {
+    "offline": "Ngoại tuyến",
+    "stale": "Đang hiển thị dữ liệu đã lưu",
+    "pending": "Đang chờ đồng bộ",
+    "syncing": "Đang đồng bộ",
+    "conflict": "Mục này cần bạn xử lý",
+    "lastSynced": "Đồng bộ lần cuối"
+  }
+}
