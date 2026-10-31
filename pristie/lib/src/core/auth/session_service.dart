@@ -25,7 +25,7 @@ final class SessionService implements AuthSessionController {
   @override
   Stream<AuthState> get authStateStream => _stateController.stream;
 
-  /// Returns the current cached [AuthState].
+  @override
   AuthState get currentAuthState => _currentAuthState;
 
   @override

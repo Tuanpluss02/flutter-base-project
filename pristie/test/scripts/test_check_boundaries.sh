@@ -38,7 +38,8 @@ assert_failure() {
 cleanup() {
   rm -rf lib/src/core/test_violation.dart \
          lib/src/core/test_relative_violation.dart \
-         lib/src/features \
+         lib/src/features/feature_a \
+         lib/src/features/_template \
          lib/test_leak_print.dart \
          lib/test_leak_debug_print.dart 2>/dev/null || true
   # If lib/src was empty, remove it
@@ -78,7 +79,7 @@ cat <<'EOF' > lib/src/features/feature_a/domain/sample.dart
 import 'package:pristie/src/features/feature_b/domain/other.dart';
 EOF
 assert_failure "Boundary check fails when feature domain imports another feature" scripts/check_boundaries.sh
-rm -rf lib/src/features
+rm -rf lib/src/features/feature_a
 
 # 5. Feature presentation cross-import
 mkdir -p lib/src/features/feature_a/presentation
@@ -86,7 +87,7 @@ cat <<'EOF' > lib/src/features/feature_a/presentation/sample_page.dart
 import 'package:pristie/src/features/feature_b/presentation/other_page.dart';
 EOF
 assert_failure "Boundary check fails when feature presentation imports another feature" scripts/check_boundaries.sh
-rm -rf lib/src/features
+rm -rf lib/src/features/feature_a
 
 # 6. Template README is allowed
 mkdir -p lib/src/features/_template
@@ -95,7 +96,7 @@ cat <<'EOF' > lib/src/features/_template/README.md
 References package:pristie/src/features/ in doc example.
 EOF
 assert_success "Boundary check passes with _template/README.md" scripts/check_boundaries.sh
-rm -rf lib/src/features
+rm -rf lib/src/features/_template
 
 # 7. Disallowed print() in lib/
 cat <<'EOF' > lib/test_leak_print.dart
