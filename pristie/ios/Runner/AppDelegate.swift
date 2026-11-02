@@ -12,5 +12,34 @@ import UIKit
 
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+    let channel = FlutterMethodChannel(
+      name: "com.bolt.pristie/backup_exclusion",
+      binaryMessenger: engineBridge.applicationRegistrar.messenger()
+    )
+    channel.setMethodCallHandler { call, result in
+      guard call.method == "excludeFromBackup" else {
+        result(FlutterMethodNotImplemented)
+        return
+      }
+      guard let arguments = call.arguments as? [String: String],
+            let path = arguments["path"] else {
+        result(FlutterError(code: "invalid_path", message: nil, details: nil))
+        return
+      }
+      var url = URL(fileURLWithPath: path).standardizedFileURL
+      let home = URL(fileURLWithPath: NSHomeDirectory()).standardizedFileURL
+      guard url.path.hasPrefix(home.path + "/") else {
+        result(FlutterError(code: "invalid_path", message: nil, details: nil))
+        return
+      }
+      do {
+        var resourceValues = URLResourceValues()
+        resourceValues.isExcludedFromBackup = true
+        try url.setResourceValues(resourceValues)
+        result(nil)
+      } catch {
+        result(FlutterError(code: "backup_exclusion_failed", message: nil, details: nil))
+      }
+    }
   }
 }
