@@ -27,16 +27,16 @@ secret-check:
 	scripts/check_secrets.sh
 
 run-dev:
-	fvm flutter run --dart-define-from-file=config/env_dev.json
+	fvm flutter run --dart-define-from-file=config/env_dev.env
 
 run-stg:
-	fvm flutter run --dart-define-from-file=config/env_stg.json
+	fvm flutter run --dart-define-from-file=config/env_stg.env
 
 build-apk-dev:
-	fvm flutter build apk --debug --dart-define-from-file=config/env_dev.json
+	fvm flutter build apk --debug --dart-define-from-file=config/env_dev.env
 
 build-prod:
-	fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.json
+	fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
 
 test-scripts:
 	bash test/scripts/run_all_tests.sh

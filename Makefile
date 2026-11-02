@@ -30,7 +30,7 @@ secret-check:
 	cd pristie && scripts/check_secrets.sh
 
 run-dev:
-	cd pristie && fvm flutter run --dart-define-from-file=config/env_dev.json
+	cd pristie && fvm flutter run --dart-define-from-file=config/env_dev.env
 
 build-prod:
-	cd pristie && fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.json
+	cd pristie && fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
