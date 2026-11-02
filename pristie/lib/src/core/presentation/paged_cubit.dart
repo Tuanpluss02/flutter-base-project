@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../error/app_failure.dart';
