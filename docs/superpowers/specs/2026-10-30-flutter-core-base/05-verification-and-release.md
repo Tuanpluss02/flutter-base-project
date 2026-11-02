@@ -28,32 +28,32 @@ Test-file map dự kiến cho implementation (điều chỉnh tên khi scaffold 
 | Shared UI và accessibility | `test/src/core/presentation/app_error_view_test.dart`, `test/src/core/presentation/app_button_test.dart` |
 | Offline Phase 2, chỉ sau các gate | `test/src/core/offline/account_scope_test.dart`, `test/src/core/offline/outbox_worker_test.dart`, `test/src/core/offline/conflict_resolution_test.dart` |
 
-Config CI phải xác nhận key set đúng chính xác, không chỉ kiểm tra giá trị: chạy `jq -e 'keys == ["API_BASE_URL", "APP_ENV", "APP_NAME", "CONNECT_TIMEOUT_MS", "ENABLE_LOGGING", "RECEIVE_TIMEOUT_MS", "SEND_TIMEOUT_MS"]'` riêng cho từng file env; danh sách được sắp xếp theo thứ tự mà jq `keys` trả về. Sau đó kiểm tra giá trị theo môi trường như bước 5.
+Config CI phải xác nhận key set đúng chính xác, không chỉ kiểm tra giá trị: `scripts/check_config.sh` parse từng file `.env`, từ chối key thiếu/thừa/trùng và kiểm tra value theo môi trường như bước 5.
 
 CI/pre-scaffold verification plan:
 1. Cài FVM-pinned Flutter; kiểm tra `flutter --version --machine` đúng pin.
 2. Trên dependency-only fixture, chạy `flutter pub get` để tạo lockfile; chạy lại `flutter pub get --enforce-lockfile` làm gate. Commit lockfile vào scaffold sau khi gate qua.
 3. `dart run build_runner build -d`, `git diff --exit-code`, rồi `test -z "$(git ls-files --others --exclude-standard)"` để bắt generated changes và file mới.
 4. Trước scaffold, dùng Gitleaks `8.30.1` đã pin để scan source/config bằng `gitleaks dir . --redact --exit-code 1`; scan history bằng `gitleaks git . --redact --exit-code 1` khi checkout có Git history. Trước khi bật CI, pin image digest theo runner architecture và chốt secret masking owner. Sau signed candidate creation, unpack Android/iOS artifacts vào thư mục tạm và chạy `gitleaks dir <unpacked-artifact-dir> --redact --exit-code 1`; fail nếu phát hiện secret và không publish report chưa redact.
-5. Config identity checks: `jq -e '.APP_ENV == "dev"' config/env_dev.json`, corresponding `stg`/`prod` checks, and `jq -e '.APP_ENV == "prod" and .ENABLE_LOGGING == false' config/env_prod.json`; deliberately mislabeled env-file fixtures must fail. Compare each environment to its app/bundle identifier mapping and build metadata.
+5. Config identity checks: chạy `scripts/check_config.sh` cho `config/env_dev.env`, `config/env_stg.env`, `config/env_prod.env`; script phải từ chối fixture bị gán sai `APP_ENV`, sai key set hoặc bật logging ở prod. Compare each environment to its app/bundle identifier mapping and build metadata.
 6. `dart format --output=none --set-exit-if-changed .` để check format mà không sửa file.
 7. `flutter analyze --fatal-infos --fatal-warnings`.
 8. `slang analyze --full --exit-if-changed`.
 9. `flutter test` (bao gồm widget semantics và accessibility checks).
 10. Build Android release prod bằng file config prod; kiểm tra `APP_ENV=prod`, application ID/config identity match, effective info/debug/request logging off (redacted warning/error permitted), signing/debuggable policy, backup exclusion và không có cleartext traffic.
-11. Trên macOS CI, build iOS release prod với `flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.json`; kiểm tra `APP_ENV=prod`, bundle ID/config identity match, effective info/debug/request logging off (redacted warning/error permitted), ATS và backup exclusion. CI chỉ kiểm tĩnh cấu hình Keychain; trước khi bật auth trên iOS, signed build phải qua kiểm tra thủ công trên thiết bị thật xác nhận `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` và đọc token khi khóa bị từ chối.
+11. Trên macOS CI, build iOS release prod với `flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env`; kiểm tra `APP_ENV=prod`, bundle ID/config identity match, effective info/debug/request logging off (redacted warning/error permitted), ATS và backup exclusion. CI chỉ kiểm tĩnh cấu hình Keychain; trước khi bật auth trên iOS, signed build phải qua kiểm tra thủ công trên thiết bị thật xác nhận `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` và đọc token khi khóa bị từ chối.
 12. Script boundary fail nếu `lib/src/core/` import `lib/src/features/`; template-copy check xác nhận thêm feature không làm đổi core.
 
 Không đặt coverage %. CI, scaffold và test được bắt đầu sau khi spec decisions được duyệt và dependency solver gate ở §2.3 qua.
 
 ## 7. Chạy app và môi trường
 
-- Dev: `flutter run --dart-define-from-file=config/env_dev.json`.
-- Staging: `flutter run --dart-define-from-file=config/env_stg.json`.
-- Prod release: `flutter build appbundle --release --dart-define-from-file=config/env_prod.json`.
-- `config/env_*.json` chỉ chứa config public; có mẫu committed và CI kiểm tra đủ keys.
+- Dev: `flutter run --dart-define-from-file=config/env_dev.env`.
+- Staging: `flutter run --dart-define-from-file=config/env_stg.env`.
+- Prod release: `flutter build appbundle --release --dart-define-from-file=config/env_prod.env`.
+- `config/env_*.env` chỉ chứa config public; có mẫu committed và CI kiểm tra đủ keys.
 - `Makefile` sau khi scaffold: `gen, analyze, test, run-dev, build-apk-dev, build-prod`.
-- Không dùng `.env`, envied generator, hoặc file Dart riêng cho từng flavor.
+- Không dùng envied generator hoặc file Dart riêng cho từng flavor.
 
 ## 8. Quyết định đã chốt
 

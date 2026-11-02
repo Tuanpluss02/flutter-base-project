@@ -32,7 +32,7 @@
 - Không static global mutable, không EventBus, không `setState` cho async, không ScreenUtil, không hard-code font family.
 - UI không gọi Dio/SharedPreferences/plugin trực tiếp; Cubit nhận dependency qua constructor; Cubit gọi UseCase, không gọi repository trực tiếp.
 - Chỉ HTTPS ở mọi môi trường; TLS verification luôn bật; không bad-certificate callback/trust-all/tắt hostname check.
-- Không secret/token/signing key trong `config/env_*.json`, source, test fixture, log hay crash context.
+- Không secret/token/signing key trong `config/env_*.env`, source, test fixture, log hay crash context.
 - Mọi user-facing string qua Slang (`context.t.*`); domain/network không chứa câu chữ UI.
 - `AppFailure`/`Result`/`BaseState`/`PagedState` là closed Freezed union; dùng `switch` pattern matching, không `.when()`/`.map()`.
 - Chỉ docstring trong code; không viết comment `//`/`/* */` (quy tắc workspace).
@@ -94,7 +94,7 @@ pristie/
   build.yaml
   analysis_options.yaml
   Makefile
-  config/env_{dev,stg,prod}.json
+  config/env_{dev,stg,prod}.env
   scripts/{ci_local,check_config,check_boundaries,check_secrets}.sh
   lib/
     main.dart
@@ -145,7 +145,7 @@ docs/adr/0001-offline-database.md
 ### Task 0: Repo, toolchain pin, dependency solver gate, baseline scaffold
 
 **Files:**
-- Create: `.gitignore` (root), `pristie/.fvmrc`, `pristie/build.yaml`, `pristie/config/env_dev.json`, `pristie/config/env_stg.json`, `pristie/config/env_prod.json`
+- Create: `.gitignore` (root), `pristie/.fvmrc`, `pristie/build.yaml`, `pristie/config/env_dev.env`, `pristie/config/env_stg.env`, `pristie/config/env_prod.env`
 - Modify: `pristie/pubspec.yaml`, `pristie/analysis_options.yaml`, `pristie/lib/main.dart` (placeholder tối thiểu), `docs/superpowers/specs/2026-10-30-flutter-core-base-design.md` (thêm link plan)
 - Generated: `pristie/pubspec.lock`
 
@@ -228,8 +228,8 @@ Mỗi file đúng 7 key, `API_BASE_URL` là HTTPS, `APP_ENV` khớp tên file:
   "SEND_TIMEOUT_MS": 30000
 }
 ```
-`env_stg.json`: `APP_ENV=stg`, `APP_NAME=Pristie Staging`, `ENABLE_LOGGING=true`.
-`env_prod.json`: `APP_ENV=prod`, `APP_NAME=Pristie`, `ENABLE_LOGGING=false`.
+`env_stg.env`: `APP_ENV=stg`, `APP_NAME=Pristie Staging`, `ENABLE_LOGGING=true`.
+`env_prod.env`: `APP_ENV=prod`, `APP_NAME=Pristie`, `ENABLE_LOGGING=false`.
 
 - [ ] **Step 7: Chạy format/analyze baseline**
 
@@ -603,7 +603,7 @@ git commit -m "feat(ui): add Material 3 theme, slang catalogs and accessible sha
 - Create: `.github/workflows/ci.yml`
 - Create: `pristie/scripts/ci_local.sh`, `check_config.sh`, `check_boundaries.sh`, `check_secrets.sh`
 - Create: `pristie/Makefile`
-- Create: `pristie/test/fixtures/config/{dev_valid,prod_logging_on,http_url,missing_key,extra_key}.json`
+- Create: `pristie/test/fixtures/config/{dev_valid,prod_logging_on,http_url,missing_key,extra_key}.env`
 - Test: chạy script trên fixture âm/dương
 
 **Interfaces:**
@@ -611,14 +611,7 @@ git commit -m "feat(ui): add Material 3 theme, slang catalogs and accessible sha
 
 - [ ] **Step 1: Viết `check_config.sh`**
 
-Với từng file `config/env_{dev,stg,prod}.json`:
-```bash
-jq -e 'keys == ["API_BASE_URL","APP_ENV","APP_NAME","CONNECT_TIMEOUT_MS","ENABLE_LOGGING","RECEIVE_TIMEOUT_MS","SEND_TIMEOUT_MS"]' "$file"
-jq -e --arg env "$env" '.APP_ENV == $env' "$file"
-jq -e '.API_BASE_URL | startswith("https://")' "$file"
-jq -e '(.CONNECT_TIMEOUT_MS > 0) and (.RECEIVE_TIMEOUT_MS > 0) and (.SEND_TIMEOUT_MS > 0)' "$file"
-```
-Prod thêm `jq -e '.ENABLE_LOGGING == false'`. Script nhận `--fixtures` để chạy bộ fixture âm và assert exit != 0.
+Với từng file `config/env_{dev,stg,prod}.env`, parser `.env` phải kiểm tra exact key set, key thiếu/thừa/trùng, `APP_ENV` khớp file, `API_BASE_URL` bắt đầu bằng `https://`, `APP_NAME` không rỗng, `ENABLE_LOGGING` là `true|false`, timeout là số dương; prod bắt buộc `ENABLE_LOGGING=false`. Script nhận `--fixtures` để chạy bộ fixture âm và assert exit != 0.
 
 - [ ] **Step 2: Viết `check_boundaries.sh`**
 
@@ -656,7 +649,7 @@ scripts/check_secrets.sh
 
 - [ ] **Step 5: Viết GitHub Actions workflow**
 
-Jobs: `verify` (checkout, cài Flutter `3.47.8` từ `.fvmrc`, cache, chạy `ci_local.sh`), `android` (build AAB prod bằng `config/env_prod.json`), `ios` (macOS, `flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.json`). Pin action major versions; không đưa secret vào workflow.
+Jobs: `verify` (checkout, cài Flutter `3.47.8` từ `.fvmrc`, cache, chạy `ci_local.sh`), `android` (build AAB prod bằng `config/env_prod.env`), `ios` (macOS, `flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env`). Pin action major versions; không đưa secret vào workflow.
 
 - [ ] **Step 6: Test script trên fixture**
 
@@ -911,7 +904,7 @@ git add pristie/lib/main.dart pristie/lib/src/app pristie/lib/src/features/*/pre
 git commit -m "feat(app): add bootstrap, DI modules, guarded router and error boundary"
 ```
 
-**Orca acceptance:** guard matrix pass; bootstrap fail-closed; app chạy `flutter run --dart-define-from-file=config/env_dev.json` hiển thị Login/Home placeholder.
+**Orca acceptance:** guard matrix pass; bootstrap fail-closed; app chạy `flutter run --dart-define-from-file=config/env_dev.env` hiển thị Login/Home placeholder.
 
 ---
 
@@ -1113,7 +1106,7 @@ cd pristie
 fvm dart run build_runner build -d
 fvm flutter test test/src/core/offline/database_test.dart test/src/core/offline/scope_isolation_test.dart test/src/core/offline/key_loss_test.dart -r expanded
 fvm flutter build apk --debug
-fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.json
+fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env
 ```
 Expected: PASS; build Android/iOS thành công với package Phase 2.
 
@@ -1222,8 +1215,8 @@ Expected: pass toàn bộ (pub enforce, codegen no-diff, format, analyze, slang 
 
 ```bash
 cd pristie
-fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.json
-fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.json
+fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env
 ```
 Expected: cả hai thành công; `APP_ENV=prod`, `ENABLE_LOGGING=false`; không cleartext.
 

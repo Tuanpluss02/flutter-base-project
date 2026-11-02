@@ -151,6 +151,7 @@ class _Translations$offline$vi extends Translations$offline$en {
 	@override String get pending => 'Đang chờ đồng bộ';
 	@override String get syncing => 'Đang đồng bộ';
 	@override String get conflict => 'Mục này cần bạn xử lý';
+	@override String get needsAttention => 'Một số thay đổi cần bạn xử lý';
 	@override String get lastSynced => 'Đồng bộ lần cuối';
 }
 
@@ -204,6 +205,7 @@ extension on TranslationsVi {
 			'offline.pending' => 'Đang chờ đồng bộ',
 			'offline.syncing' => 'Đang đồng bộ',
 			'offline.conflict' => 'Mục này cần bạn xử lý',
+			'offline.needsAttention' => 'Một số thay đổi cần bạn xử lý',
 			'offline.lastSynced' => 'Đồng bộ lần cuối',
 			_ => null,
 		};

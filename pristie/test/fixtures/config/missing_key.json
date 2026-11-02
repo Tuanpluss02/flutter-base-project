@@ -1,8 +1,0 @@
-{
-  "API_BASE_URL": "https://api.dev.pristie.example",
-  "APP_NAME": "Pristie Dev",
-  "ENABLE_LOGGING": true,
-  "CONNECT_TIMEOUT_MS": 15000,
-  "RECEIVE_TIMEOUT_MS": 30000,
-  "SEND_TIMEOUT_MS": 30000
-}

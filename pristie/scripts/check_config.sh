@@ -13,48 +13,105 @@ validate_config_file() {
     return 1
   fi
 
-  # 1. Exact keys check
-  if ! jq -e 'keys == ["API_BASE_URL","APP_ENV","APP_NAME","CONNECT_TIMEOUT_MS","ENABLE_LOGGING","RECEIVE_TIMEOUT_MS","SEND_TIMEOUT_MS"]' "$file" >/dev/null; then
-    echo "ERROR: Invalid keys in $file. Keys must exactly match [API_BASE_URL, APP_ENV, APP_NAME, CONNECT_TIMEOUT_MS, ENABLE_LOGGING, RECEIVE_TIMEOUT_MS, SEND_TIMEOUT_MS]" >&2
-    return 1
-  fi
+  awk -v expected_env="$expected_env" '
+    function trim(value) {
+      sub(/^[ \t\r]+/, "", value)
+      sub(/[ \t\r]+$/, "", value)
+      return value
+    }
 
-  # 2. APP_ENV check
-  local file_env
-  file_env="$(jq -r '.APP_ENV' "$file")"
-  if [ "$file_env" != "dev" ] && [ "$file_env" != "stg" ] && [ "$file_env" != "prod" ]; then
-    echo "ERROR: Invalid APP_ENV '$file_env' in $file. Must be dev, stg, or prod." >&2
-    return 1
-  fi
+    function unquote(value, first, last, single_quote) {
+      first = substr(value, 1, 1)
+      last = substr(value, length(value), 1)
+      if (first == "\"" && last == "\"") {
+        return substr(value, 2, length(value) - 2)
+      }
+      single_quote = sprintf("%c", 39)
+      if (first == single_quote && last == single_quote) {
+        return substr(value, 2, length(value) - 2)
+      }
+      if (first == "`" && last == "`") {
+        return substr(value, 2, length(value) - 2)
+      }
+      return value
+    }
 
-  if [ -n "$expected_env" ]; then
-    if ! jq -e --arg env "$expected_env" '.APP_ENV == $env' "$file" >/dev/null; then
-      echo "ERROR: APP_ENV in $file is '$file_env', expected '$expected_env'" >&2
-      return 1
-    fi
-  fi
+    function fail(message) {
+      print "ERROR: " message > "/dev/stderr"
+      failed = 1
+      exit 1
+    }
 
-  # 3. HTTPS check
-  if ! jq -e '.API_BASE_URL | startswith("https://")' "$file" >/dev/null; then
-    echo "ERROR: API_BASE_URL in $file must start with https://" >&2
-    return 1
-  fi
+    BEGIN {
+      expected_count = split("APP_ENV API_BASE_URL APP_NAME ENABLE_LOGGING CONNECT_TIMEOUT_MS RECEIVE_TIMEOUT_MS SEND_TIMEOUT_MS", expected_keys, " ")
+      for (i = 1; i <= expected_count; i++) {
+        allowed[expected_keys[i]] = 1
+      }
+    }
 
-  # 4. Timeouts check (> 0)
-  if ! jq -e '(.CONNECT_TIMEOUT_MS > 0) and (.RECEIVE_TIMEOUT_MS > 0) and (.SEND_TIMEOUT_MS > 0)' "$file" >/dev/null; then
-    echo "ERROR: CONNECT_TIMEOUT_MS, RECEIVE_TIMEOUT_MS, and SEND_TIMEOUT_MS in $file must all be greater than 0" >&2
-    return 1
-  fi
+    {
+      line = trim($0)
+      if (line == "" || substr(line, 1, 1) == "#") next
 
-  # 5. Prod logging check: prod must have ENABLE_LOGGING == false
-  if [ "$file_env" = "prod" ]; then
-    if ! jq -e '.ENABLE_LOGGING == false' "$file" >/dev/null; then
-      echo "ERROR: ENABLE_LOGGING must be false in prod environment ($file)" >&2
-      return 1
-    fi
-  fi
+      separator = index(line, "=")
+      if (separator == 0) {
+        fail("invalid property line in " FILENAME ": " line)
+      }
 
-  return 0
+      key = trim(substr(line, 1, separator - 1))
+      value = trim(substr(line, separator + 1))
+
+      if (key !~ /^[A-Za-z_][A-Za-z0-9_]*$/) {
+        fail("invalid key in " FILENAME ": " key)
+      }
+      if (key in seen) {
+        fail("duplicate key in " FILENAME ": " key)
+      }
+      if (!(key in allowed)) {
+        fail("unexpected key in " FILENAME ": " key)
+      }
+
+      seen[key] = unquote(value)
+    }
+
+    END {
+      if (failed) exit 1
+
+      for (i = 1; i <= expected_count; i++) {
+        key = expected_keys[i]
+        if (!(key in seen)) {
+          fail("missing key in " FILENAME ": " key)
+        }
+      }
+
+      if (expected_env != "" && seen["APP_ENV"] != expected_env) {
+        fail("APP_ENV in " FILENAME " is \"" seen["APP_ENV"] "\", expected \"" expected_env "\"")
+      }
+      if (seen["APP_ENV"] != "dev" && seen["APP_ENV"] != "stg" && seen["APP_ENV"] != "prod") {
+        fail("APP_ENV in " FILENAME " must be dev, stg, or prod")
+      }
+      if (seen["API_BASE_URL"] !~ /^https:\/\/[^[:space:]]+$/) {
+        fail("API_BASE_URL in " FILENAME " must start with https:// and contain no spaces")
+      }
+      if (trim(seen["APP_NAME"]) == "") {
+        fail("APP_NAME in " FILENAME " is required")
+      }
+      if (seen["ENABLE_LOGGING"] != "true" && seen["ENABLE_LOGGING"] != "false") {
+        fail("ENABLE_LOGGING in " FILENAME " must be true or false")
+      }
+      if (seen["APP_ENV"] == "prod" && seen["ENABLE_LOGGING"] != "false") {
+        fail("ENABLE_LOGGING must be false in prod (" FILENAME ")")
+      }
+
+      timeout_keys_count = split("CONNECT_TIMEOUT_MS RECEIVE_TIMEOUT_MS SEND_TIMEOUT_MS", timeout_keys, " ")
+      for (i = 1; i <= timeout_keys_count; i++) {
+        key = timeout_keys[i]
+        if (seen[key] !~ /^[0-9]+$/ || seen[key] + 0 <= 0) {
+          fail(key " in " FILENAME " must be a positive integer")
+        }
+      }
+    }
+  ' "$file"
 }
 
 run_fixtures() {
@@ -63,26 +120,24 @@ run_fixtures() {
 
   echo "Validating configuration fixtures in: $fixtures_dir"
 
-  # Positive fixture: dev_valid.json should pass
-  local valid_fixture="$fixtures_dir/dev_valid.json"
+  local valid_fixture="$fixtures_dir/dev_valid.env"
   if [ -f "$valid_fixture" ]; then
     if validate_config_file "$valid_fixture" "dev" >/dev/null 2>&1; then
-      echo "  [PASS] dev_valid.json correctly passed validation."
+      echo "  [PASS] dev_valid.env correctly passed validation."
     else
-      echo "  [FAIL] dev_valid.json failed validation unexpectedly!" >&2
+      echo "  [FAIL] dev_valid.env failed validation unexpectedly!" >&2
       failures=$((failures + 1))
     fi
   else
-    echo "  [ERROR] dev_valid.json not found in $fixtures_dir" >&2
+    echo "  [ERROR] dev_valid.env not found in $fixtures_dir" >&2
     failures=$((failures + 1))
   fi
 
-  # Negative fixtures: each should fail validation
   local negative_fixtures=(
-    "prod_logging_on.json:prod"
-    "http_url.json:dev"
-    "missing_key.json:dev"
-    "extra_key.json:dev"
+    "prod_logging_on.env:prod"
+    "http_url.env:dev"
+    "missing_key.env:dev"
+    "extra_key.env:dev"
   )
 
   for item in "${negative_fixtures[@]}"; do
@@ -112,7 +167,6 @@ run_fixtures() {
   return 0
 }
 
-# Mode 1: --fixtures
 if [ "${1:-}" = "--fixtures" ]; then
   shift
   user_dir="${1:-test/fixtures/config}"
@@ -127,13 +181,11 @@ if [ "${1:-}" = "--fixtures" ]; then
   exit $?
 fi
 
-# Mode 2: direct file validation (argument is provided and is not an existing directory)
 if [ -n "${1:-}" ] && [ ! -d "$1" ]; then
   validate_config_file "$1" "${2:-}"
   exit $?
 fi
 
-# Mode 3: validate standard config files in config directory
 CONFIG_DIR="config"
 if [ ! -d "$CONFIG_DIR" ] && [ -d "$PRISTIE_DIR/config" ]; then
   CONFIG_DIR="$PRISTIE_DIR/config"
@@ -146,9 +198,9 @@ fi
 echo "Validating environment configuration files in: $CONFIG_DIR"
 failed=0
 
-validate_config_file "$CONFIG_DIR/env_dev.json" "dev" || failed=1
-validate_config_file "$CONFIG_DIR/env_stg.json" "stg" || failed=1
-validate_config_file "$CONFIG_DIR/env_prod.json" "prod" || failed=1
+validate_config_file "$CONFIG_DIR/env_dev.env" "dev" || failed=1
+validate_config_file "$CONFIG_DIR/env_stg.env" "stg" || failed=1
+validate_config_file "$CONFIG_DIR/env_prod.env" "prod" || failed=1
 
 if [ "$failed" -ne 0 ]; then
   echo "ERROR: Environment configuration validation failed!" >&2

@@ -81,7 +81,7 @@ jobs:
         working-directory: pristie
         run: |
           fvm flutter pub get --enforce-lockfile
-          fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.json
+          fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
 
       - name: Install Gitleaks 8.30.1 for Artifact Scan
         run: |
@@ -118,4 +118,4 @@ jobs:
         working-directory: pristie
         run: |
           fvm flutter pub get --enforce-lockfile
-          fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.json
+          fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env

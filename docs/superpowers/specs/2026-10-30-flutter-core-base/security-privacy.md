@@ -77,7 +77,7 @@ Ma trận nơi lưu:
 
 ## 3. Config và secrets
 
-- `config/env_dev.json`, `env_stg.json`, `env_prod.json` chỉ chứa key public trong allowlist: `APP_ENV`, `API_BASE_URL`, `APP_NAME`, `ENABLE_LOGGING`, `CONNECT_TIMEOUT_MS`, `RECEIVE_TIMEOUT_MS`, `SEND_TIMEOUT_MS`. CI phải kiểm tra `APP_ENV` khớp filename, app/bundle identifier và build metadata; runtime một mình không thể xác minh nguồn của Dart define.
+- `config/env_dev.env`, `env_stg.env`, `env_prod.env` chỉ chứa key public trong allowlist: `APP_ENV`, `API_BASE_URL`, `APP_NAME`, `ENABLE_LOGGING`, `CONNECT_TIMEOUT_MS`, `RECEIVE_TIMEOUT_MS`, `SEND_TIMEOUT_MS`. CI phải kiểm tra `APP_ENV` khớp filename, app/bundle identifier và build metadata; runtime một mình không thể xác minh nguồn của Dart define.
 - Không đưa token, API secret, signing key, mật khẩu, connection string hay private key vào file config, `--dart-define`, asset, source, test fixture hoặc generated file. Giá trị `--dart-define` được biên dịch vào binary nên không phải nơi giấu secret.
 - Pre-scaffold source/config scan dùng Gitleaks v8.30.1 đã pin và fail nếu có finding; scan Git history khi checkout có history. Trước khi bật CI, chốt image digest theo runner architecture và secret masking owner. CI xác nhận chính xác config key allowlist; trước release, scan artifact đã giải nén bằng cùng phiên bản Gitleaks. Log/report scan luôn bật redaction.
 - Secret thật chỉ tồn tại ở backend hoặc secret store của CI (signing, store credential). Không in secret ra log CI; mask biến môi trường.
@@ -85,7 +85,7 @@ Ma trận nơi lưu:
 - Dev/stg không được dùng chung credential với prod. Máy dev không giữ khoá prod. Dev config không được đóng vào bản prod.
 - `ENABLE_LOGGING` điều khiển log info/debug, request và diagnostic thông thường; prod bắt buộc false và AppLogger ép các mức này tắt. Warning/error đã redact được phép qua console sink; không có file/persistent sink mặc định. `AppConfig` từ chối prod config bật cờ này; CI xác nhận env file/APP_ENV/app identifier/build metadata cùng khớp. Không dựa vào Dart `assert` vì assert bị loại ở release. Debug build không được phát hành; release không debuggable và không có debug override cho auth/network.
 - Khi nghi lộ secret: thu hồi/rotate trước, sửa nguyên nhân sau; ghi incident note; không chỉ xoá commit.
-- Không dùng `.env`, envied, file Dart theo flavor hoặc bad-certificate bypass (01 §3, 02 §4.1).
+- Không dùng envied, file Dart theo flavor hoặc bad-certificate bypass (01 §3, 02 §4.1).
 
 ## 4. Token và session
 

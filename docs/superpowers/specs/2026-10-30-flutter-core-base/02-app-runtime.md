@@ -7,13 +7,13 @@ Trạng thái: bộ spec tích hợp đang chờ cả hai reviewer duyệt cùng
 
 ### 4.1 Cấu hình
 
-- Cấu hình công khai nằm trong `config/env_dev.json`, `config/env_stg.json`, `config/env_prod.json`; file được truyền khi build bằng `--dart-define-from-file`.
-- Bootstrap đọc `String.fromEnvironment` một lần, tạo immutable `AppConfig` type từ `core/config/` rồi inject; không dùng envied, generated env constants, `.env` hoặc flavor entrypoint riêng.
+- Cấu hình công khai nằm trong `config/env_dev.env`, `config/env_stg.env`, `config/env_prod.env`; file được truyền khi build bằng `--dart-define-from-file`.
+- Bootstrap đọc `String.fromEnvironment` một lần, tạo immutable `AppConfig` type từ `core/config/` rồi inject; không dùng envied, generated env constants hoặc flavor entrypoint riêng.
 - Keys v1: `APP_ENV` (`dev`, `stg`, `prod`), `API_BASE_URL`, `APP_NAME`, `ENABLE_LOGGING`, `CONNECT_TIMEOUT_MS`, `RECEIVE_TIMEOUT_MS`, `SEND_TIMEOUT_MS`.
 - Config thiếu key, `APP_ENV` ngoài enum, `API_BASE_URL` không dùng HTTPS ở mọi môi trường, hoặc timeout không hợp lệ phải fail sớm với lỗi cấu hình có tên key, không in giá trị nhạy cảm. CI kiểm tra `APP_ENV` khớp file config; runtime không thể tự biết nguồn của Dart define. Backend dev local cũng phải dùng HTTPS với certificate được trust; không có HTTP/cleartext exception.
 - Các file config chỉ chứa giá trị public. Token, signing key và credential không được đóng vào client binary.
 - `ENABLE_LOGGING` điều khiển info/debug/request diagnostics; prod bắt buộc false, `AppConfig` từ chối prod config bật cờ này và AppLogger ép các mức đó tắt. Warning/error đã redact vẫn được phép tới console. Đây là runtime enforcement có typed config failure, không dựa vào Dart `assert` vì assert bị loại khỏi release. CI xác nhận file config, `APP_ENV`, app identifiers và build metadata cùng chỉ tới một environment.
-- Lệnh mẫu: `flutter run --dart-define-from-file=config/env_dev.json`.
+- Lệnh mẫu: `flutter run --dart-define-from-file=config/env_dev.env`.
 
 ### 4.2 DI và bootstrap
 

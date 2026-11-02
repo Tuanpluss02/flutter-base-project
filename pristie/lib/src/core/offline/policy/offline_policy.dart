@@ -21,3 +21,29 @@ abstract class OfflinePolicy with _$OfflinePolicy {
     required ConflictPolicy conflictPolicy,
   }) = _OfflinePolicy;
 }
+
+/// Fail-closed policy checks shared by the outbox and sync coordinator.
+///
+/// S2 (personal) and S3 (secret) data stay online-only until the security
+/// gates in the offline-first specification are approved.
+extension OfflinePolicyRules on OfflinePolicy {
+  /// Whether this dataset may be persisted in the local encrypted database.
+  bool get mayPersistLocally =>
+      classification == DataClassification.s0 ||
+      classification == DataClassification.s1;
+
+  /// Whether [operation] may be queued for this dataset.
+  bool allows(OfflineOperation operation) =>
+      mayPersistLocally && allowedOperations.contains(operation);
+}
+
+/// Thrown when a feature tries to persist data the policy does not allow.
+final class OfflinePolicyViolation implements Exception {
+  const OfflinePolicyViolation(this.message);
+
+  /// Human-readable reason intended for diagnostics, never for UI.
+  final String message;
+
+  @override
+  String toString() => 'OfflinePolicyViolation: $message';
+}

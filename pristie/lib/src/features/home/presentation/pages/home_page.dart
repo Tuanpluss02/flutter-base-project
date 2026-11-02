@@ -12,16 +12,26 @@ import 'package:pristie/src/shared/widgets/app_loading_view.dart';
 
 import '../../domain/entities/demo_item.dart';
 import '../cubit/home_cubit.dart';
+import '../cubit/offline_home_cubit.dart';
+import 'offline_home_view.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) => BlocProvider(
-    create: (_) => getIt<HomeCubit>()..loadFirst(),
-    child: const _HomeContent(),
-  );
+  Widget build(BuildContext context) {
+    if (getIt.isRegistered<OfflineHomeCubit>()) {
+      return BlocProvider(
+        create: (_) => getIt<OfflineHomeCubit>()..load(),
+        child: const OfflineHomeView(),
+      );
+    }
+    return BlocProvider(
+      create: (_) => getIt<HomeCubit>()..loadFirst(),
+      child: const _HomeContent(),
+    );
+  }
 }
 
 class _HomeContent extends StatelessWidget {

@@ -238,6 +238,9 @@ class Translations$offline$en {
 	/// en: 'This item needs your attention'
 	String get conflict => 'This item needs your attention';
 
+	/// en: 'Some changes need your attention'
+	String get needsAttention => 'Some changes need your attention';
+
 	/// en: 'Last synced'
 	String get lastSynced => 'Last synced';
 }
@@ -292,6 +295,7 @@ extension on Translations {
 			'offline.pending' => 'Waiting to sync',
 			'offline.syncing' => 'Syncing',
 			'offline.conflict' => 'This item needs your attention',
+			'offline.needsAttention' => 'Some changes need your attention',
 			'offline.lastSynced' => 'Last synced',
 			_ => null,
 		};

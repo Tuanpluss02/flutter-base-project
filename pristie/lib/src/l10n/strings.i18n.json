@@ -54,6 +54,7 @@
     "pending": "Waiting to sync",
     "syncing": "Syncing",
     "conflict": "This item needs your attention",
+    "needsAttention": "Some changes need your attention",
     "lastSynced": "Last synced"
   }
 }
