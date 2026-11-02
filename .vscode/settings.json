@@ -1,0 +1,9 @@
+{
+  "dart.flutterSdkPath": "pristie/.fvm/flutter_sdk",
+  "search.exclude": {
+    "**/pristie/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/pristie/.fvm": true
+  }
+}
