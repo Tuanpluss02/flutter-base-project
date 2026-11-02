@@ -103,6 +103,9 @@ class Translations$login$en {
 	/// en: 'Sign in'
 	String get submit => 'Sign in';
 
+	/// en: 'This field is required'
+	String get required => 'This field is required';
+
 	/// en: 'Incorrect email or password'
 	String get invalidCredentials => 'Incorrect email or password';
 }
@@ -120,6 +123,9 @@ class Translations$home$en {
 
 	/// en: 'Load more'
 	String get loadMore => 'Load more';
+
+	/// en: 'Demo item $id'
+	String item({required Object id}) => 'Demo item ${id}';
 }
 
 // Path: settings
@@ -144,6 +150,21 @@ class Translations$settings$en {
 
 	/// en: 'Are you sure you want to sign out?'
 	String get logoutConfirm => 'Are you sure you want to sign out?';
+
+	/// en: 'System'
+	String get themeSystem => 'System';
+
+	/// en: 'Light'
+	String get themeLight => 'Light';
+
+	/// en: 'Dark'
+	String get themeDark => 'Dark';
+
+	/// en: 'English'
+	String get english => 'English';
+
+	/// en: 'Vietnamese'
+	String get vietnamese => 'Vietnamese';
 }
 
 // Path: error
@@ -238,14 +259,21 @@ extension on Translations {
 			'login.email' => 'Email',
 			'login.password' => 'Password',
 			'login.submit' => 'Sign in',
+			'login.required' => 'This field is required',
 			'login.invalidCredentials' => 'Incorrect email or password',
 			'home.title' => 'Home',
 			'home.loadMore' => 'Load more',
+			'home.item' => ({required Object id}) => 'Demo item ${id}',
 			'settings.title' => 'Settings',
 			'settings.theme' => 'Theme',
 			'settings.language' => 'Language',
 			'settings.logout' => 'Sign out',
 			'settings.logoutConfirm' => 'Are you sure you want to sign out?',
+			'settings.themeSystem' => 'System',
+			'settings.themeLight' => 'Light',
+			'settings.themeDark' => 'Dark',
+			'settings.english' => 'English',
+			'settings.vietnamese' => 'Vietnamese',
 			'error.network' => 'No internet connection. Check your connection and try again.',
 			'error.timeout' => 'The request timed out. Try again.',
 			'error.unauthorized' => 'Your session has expired. Please sign in again.',

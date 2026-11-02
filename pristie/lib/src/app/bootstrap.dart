@@ -15,6 +15,7 @@ import 'package:pristie/src/core/observability/crash_reporter.dart';
 import 'package:pristie/src/core/storage/local_storage.dart';
 import 'package:pristie/src/core/storage/secure_storage.dart';
 import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
 
 /// Initializes application infrastructure, executes fail-closed checks, and launches root UI.
 Future<void> bootstrap({
@@ -49,6 +50,7 @@ Future<void> bootstrap({
         await getIt<LocalStorage>().setString('install_marker', 'v1');
       }
       authState = await getIt<SessionService>().restore();
+      await getIt<SettingsCubit>().load();
     }
   } catch (error, stackTrace) {
     authState = AuthState.locked;
@@ -66,5 +68,12 @@ Future<void> bootstrap({
   Bloc.observer = AppBlocObserver(logger: getIt<AppLogger>());
   installErrorHandlers(getIt<CrashReporter>());
 
-  (runner ?? runApp)(App(config: config, router: router, authState: authState));
+  (runner ?? runApp)(
+    App(
+      config: config,
+      router: router,
+      authState: authState,
+      settingsCubit: getIt<SettingsCubit>(),
+    ),
+  );
 }

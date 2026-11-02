@@ -6,13 +6,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pristie/src/app/app_router.dart';
 import 'package:pristie/src/app/app_router.gr.dart';
 import 'package:pristie/src/app/guards/auth_guard.dart';
+import 'package:pristie/src/app/injection.dart';
 import 'package:pristie/src/app/pages/not_found_page.dart';
 import 'package:pristie/src/core/auth/auth_session_controller.dart';
 import 'package:pristie/src/core/auth/auth_state.dart';
 import 'package:pristie/src/core/result/result.dart';
 import 'package:pristie/src/core/storage/session.dart';
+import 'package:pristie/src/features/auth_placeholder/domain/usecases/login_use_case.dart';
+import 'package:pristie/src/features/auth_placeholder/presentation/cubit/login_cubit.dart';
 import 'package:pristie/src/features/auth_placeholder/presentation/pages/login_page.dart';
+import 'package:pristie/src/features/home/data/repositories/in_memory_demo_items_repository.dart';
+import 'package:pristie/src/features/home/domain/usecases/get_items_use_case.dart';
+import 'package:pristie/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:pristie/src/features/home/presentation/pages/home_page.dart';
+import 'package:pristie/src/l10n/strings.g.dart';
 
 class FakeAuthSessionController implements AuthSessionController {
   FakeAuthSessionController({AuthState initialState = AuthState.unknown})
@@ -220,17 +227,26 @@ void main() {
     late AuthGuard guard;
     late AppRouter router;
 
-    setUp(() {
+    setUp(() async {
+      await getIt.reset();
+      await LocaleSettings.setLocale(AppLocale.en);
       fakeController = FakeAuthSessionController(
         initialState: AuthState.unauthenticated,
+      );
+      getIt.registerFactory<LoginCubit>(
+        () => LoginCubit(LoginUseCase(fakeController)),
+      );
+      getIt.registerFactory<HomeCubit>(
+        () => HomeCubit(GetItemsUseCase(InMemoryDemoItemsRepository())),
       );
       guard = AuthGuard(sessionController: fakeController);
       router = AppRouter(guard);
     });
 
-    tearDown(() {
+    tearDown(() async {
       guard.dispose();
       fakeController.dispose();
+      await getIt.reset();
     });
 
     testWidgets('unauthenticated on initial / redirects to LoginPage', (
@@ -242,6 +258,8 @@ void main() {
             reevaluateListenable: guard,
             deepLinkBuilder: (_) => DeepLink.defaultPath,
           ),
+          builder: (context, child) =>
+              TranslationProvider(child: child ?? const SizedBox.shrink()),
         ),
       );
       await tester.pumpAndSettle();
@@ -259,6 +277,8 @@ void main() {
             reevaluateListenable: guard,
             deepLinkBuilder: (_) => DeepLink.defaultPath,
           ),
+          builder: (context, child) =>
+              TranslationProvider(child: child ?? const SizedBox.shrink()),
         ),
       );
       await tester.pumpAndSettle();
@@ -278,6 +298,8 @@ void main() {
               reevaluateListenable: guard,
               deepLinkBuilder: (_) => DeepLink.defaultPath,
             ),
+            builder: (context, child) =>
+                TranslationProvider(child: child ?? const SizedBox.shrink()),
           ),
         );
         await tester.pumpAndSettle();
@@ -303,6 +325,8 @@ void main() {
               reevaluateListenable: guard,
               deepLinkBuilder: (_) => DeepLink.defaultPath,
             ),
+            builder: (context, child) =>
+                TranslationProvider(child: child ?? const SizedBox.shrink()),
           ),
         );
         await tester.pumpAndSettle();
@@ -331,6 +355,8 @@ void main() {
             reevaluateListenable: guard,
             deepLinkBuilder: (_) => DeepLink.defaultPath,
           ),
+          builder: (context, child) =>
+              TranslationProvider(child: child ?? const SizedBox.shrink()),
         ),
       );
       await tester.pumpAndSettle();

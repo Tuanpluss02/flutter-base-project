@@ -13,18 +13,25 @@
     "email": "Email",
     "password": "Password",
     "submit": "Sign in",
+    "required": "This field is required",
     "invalidCredentials": "Incorrect email or password"
   },
   "home": {
     "title": "Home",
-    "loadMore": "Load more"
+    "loadMore": "Load more",
+    "item": "Demo item $id"
   },
   "settings": {
     "title": "Settings",
     "theme": "Theme",
     "language": "Language",
     "logout": "Sign out",
-    "logoutConfirm": "Are you sure you want to sign out?"
+    "logoutConfirm": "Are you sure you want to sign out?",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "english": "English",
+    "vietnamese": "Vietnamese"
   },
   "error": {
     "network": "No internet connection. Check your connection and try again.",

@@ -82,6 +82,7 @@ class _Translations$login$vi extends Translations$login$en {
 	@override String get email => 'Email';
 	@override String get password => 'Mật khẩu';
 	@override String get submit => 'Đăng nhập';
+	@override String get required => 'Trường này là bắt buộc';
 	@override String get invalidCredentials => 'Email hoặc mật khẩu không đúng';
 }
 
@@ -94,6 +95,7 @@ class _Translations$home$vi extends Translations$home$en {
 	// Translations
 	@override String get title => 'Trang chủ';
 	@override String get loadMore => 'Tải thêm';
+	@override String item({required Object id}) => 'Mục mẫu ${id}';
 }
 
 // Path: settings
@@ -108,6 +110,11 @@ class _Translations$settings$vi extends Translations$settings$en {
 	@override String get language => 'Ngôn ngữ';
 	@override String get logout => 'Đăng xuất';
 	@override String get logoutConfirm => 'Bạn có chắc muốn đăng xuất?';
+	@override String get themeSystem => 'Theo hệ thống';
+	@override String get themeLight => 'Sáng';
+	@override String get themeDark => 'Tối';
+	@override String get english => 'Tiếng Anh';
+	@override String get vietnamese => 'Tiếng Việt';
 }
 
 // Path: error
@@ -164,14 +171,21 @@ extension on TranslationsVi {
 			'login.email' => 'Email',
 			'login.password' => 'Mật khẩu',
 			'login.submit' => 'Đăng nhập',
+			'login.required' => 'Trường này là bắt buộc',
 			'login.invalidCredentials' => 'Email hoặc mật khẩu không đúng',
 			'home.title' => 'Trang chủ',
 			'home.loadMore' => 'Tải thêm',
+			'home.item' => ({required Object id}) => 'Mục mẫu ${id}',
 			'settings.title' => 'Cài đặt',
 			'settings.theme' => 'Giao diện',
 			'settings.language' => 'Ngôn ngữ',
 			'settings.logout' => 'Đăng xuất',
 			'settings.logoutConfirm' => 'Bạn có chắc muốn đăng xuất?',
+			'settings.themeSystem' => 'Theo hệ thống',
+			'settings.themeLight' => 'Sáng',
+			'settings.themeDark' => 'Tối',
+			'settings.english' => 'Tiếng Anh',
+			'settings.vietnamese' => 'Tiếng Việt',
 			'error.network' => 'Không có kết nối mạng. Kiểm tra kết nối và thử lại.',
 			'error.timeout' => 'Yêu cầu đã hết thời gian chờ. Hãy thử lại.',
 			'error.unauthorized' => 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.',
