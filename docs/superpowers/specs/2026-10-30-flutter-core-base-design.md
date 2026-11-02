@@ -1,7 +1,7 @@
 # Flutter Core Base — Spec Index
 
-Ngày: 2026-10-30 (rev6 — tích hợp phản biện reviewer 2)  
-Trạng thái: bộ spec tích hợp đang chờ hai reviewer approve cùng một revision. Chưa bắt đầu implementation.
+Ngày: 2026-11-02 (rev7 — implementation hoàn tất Tasks 0-10, đang trong giai đoạn audit nghiệm thu)  
+Trạng thái: Implementation hoàn tất. Đang chuẩn bị báo cáo nghiệm thu [Verification Report](../plans/2026-10-31-verification-report.md) để reviewer độc lập audit.
 
 Bộ spec được tách theo chủ đề để mỗi phần có phạm vi đọc và review rõ ràng. Nội dung kỹ thuật đã chốt được giữ trong các tài liệu bên dưới.
 

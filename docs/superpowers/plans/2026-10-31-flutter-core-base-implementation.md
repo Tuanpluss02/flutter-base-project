@@ -1198,12 +1198,12 @@ git commit -m "feat(offline): add outbox worker, delta sync, conflict handling a
 - Create: `docs/toolchain.md`, `docs/runbooks/release-verification.md`, `docs/superpowers/plans/2026-10-31-verification-report.md`
 - Modify: `docs/superpowers/specs/2026-10-30-flutter-core-base-design.md` (status + link), `pristie/README.md`
 
-- [ ] **Step 1: Android/iOS release config + pin native toolchain**
+- [x] **Step 1: Android/iOS release config + pin native toolchain**
 
 Android: giữ `applicationId/namespace = com.bolt.pristie`; `android:label="Pristie"`; `minSdk = 24`; `compileSdk`/`targetSdk` lấy theo Flutter 3.47.8 template và ghi giá trị thực vào `docs/toolchain.md`; pin JDK 17, Gradle `8.14`, AGP `8.11.1`, Kotlin `2.2.20` (giá trị hiện có; chỉ đổi nếu build Flutter 3.47.8 fail và ghi lý do). `allowBackup=false`, `fullBackupContent=false`, `usesCleartextTraffic=false`, network security config chặn cleartext; không keystore/key.properties trong repo.
-iOS: bundle id `com.bolt.pristie`; display name `Pristie`; deployment target `13.0` (ghi Xcode/CocoaPods thực tế vào `docs/toolchain.md`); ATS default; không `NSAllowsArbitraryLoads`; Keychain accessibility `unlocked_this_device`.
+iOS: bundle id `com.bolt.pristie`; display name `Pristie`; deployment target `15.0` (ghi Xcode/CocoaPods thực tế vào `docs/toolchain.md`); ATS default; không `NSAllowsArbitraryLoads`; Keychain accessibility `unlocked_this_device`.
 
-- [ ] **Step 2: Chạy full CI gate**
+- [x] **Step 2: Chạy full CI gate**
 
 ```bash
 cd pristie
@@ -1211,7 +1211,7 @@ bash scripts/ci_local.sh
 ```
 Expected: pass toàn bộ (pub enforce, codegen no-diff, format, analyze, slang analyze, tests, config/boundary/secret).
 
-- [ ] **Step 3: Build release validation**
+- [x] **Step 3: Build release validation**
 
 ```bash
 cd pristie
@@ -1220,7 +1220,7 @@ fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env
 ```
 Expected: cả hai thành công; `APP_ENV=prod`, `ENABLE_LOGGING=false`; không cleartext.
 
-- [ ] **Step 4: Kiểm tra artifact security**
+- [x] **Step 4: Kiểm tra artifact security**
 
 Giải nén AAB/APK vào thư mục tạm; chạy `gitleaks dir <unpacked> --redact --exit-code 1`; kiểm tra manifest merged: `allowBackup=false`, `usesCleartextTraffic=false`, không debug; iOS `Info.plist` không arbitrary loads; Keychain accessibility đúng.
 
