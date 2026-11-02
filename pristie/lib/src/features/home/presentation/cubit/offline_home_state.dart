@@ -4,7 +4,7 @@ import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
 
 import '../../domain/entities/demo_item.dart';
 
-part 'offline_home_state.freezed.dart';
+part '../../../../../generated/src/features/home/presentation/cubit/offline_home_state.freezed.dart';
 
 /// Local-first home state. Cached [items] stay visible while a background
 /// refresh runs or fails.

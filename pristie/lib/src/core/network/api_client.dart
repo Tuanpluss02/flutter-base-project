@@ -3,8 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pristie/src/core/storage/session.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'api_client.freezed.dart';
-part 'api_client.g.dart';
+part '../../../generated/src/core/network/api_client.freezed.dart';
+part '../../../generated/src/core/network/api_client.g.dart';
 
 /// Sample item transfer object.
 @freezed

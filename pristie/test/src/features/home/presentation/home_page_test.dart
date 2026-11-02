@@ -13,7 +13,7 @@ import 'package:pristie/src/features/home/domain/repositories/demo_items_reposit
 import 'package:pristie/src/features/home/domain/usecases/get_items_use_case.dart';
 import 'package:pristie/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:pristie/src/features/home/presentation/pages/home_page.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 import 'package:pristie/src/shared/widgets/app_empty_view.dart';
 import 'package:pristie/src/shared/widgets/app_error_view.dart';
 

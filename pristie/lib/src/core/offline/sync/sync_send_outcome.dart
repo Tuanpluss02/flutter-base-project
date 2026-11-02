@@ -3,7 +3,7 @@ import 'package:pristie/src/core/error/app_failure.dart';
 
 import 'sync_conflict.dart';
 
-part 'sync_send_outcome.freezed.dart';
+part '../../../../generated/src/core/offline/sync/sync_send_outcome.freezed.dart';
 
 /// Typed result of sending one outbox operation.
 ///

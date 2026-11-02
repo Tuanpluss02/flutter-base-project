@@ -14,7 +14,7 @@ import 'package:pristie/src/features/home/data/repositories/in_memory_demo_items
 import 'package:pristie/src/features/home/domain/usecases/get_items_use_case.dart';
 import 'package:pristie/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:pristie/src/features/home/presentation/pages/home_page.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 
 import '../../support/fakes.dart';
 import '../../support/test_app.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/error/app_failure.dart';
-import '../../l10n/strings.g.dart';
+
+import 'package:pristie/generated/l10n/strings.g.dart';
+
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 import 'app_button.dart';

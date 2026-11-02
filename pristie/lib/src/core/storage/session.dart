@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'session.freezed.dart';
-part 'session.g.dart';
+part '../../../generated/src/core/storage/session.freezed.dart';
+part '../../../generated/src/core/storage/session.g.dart';
 
 /// Mutually exclusive session record statuses in secure storage.
 enum SessionStatus {

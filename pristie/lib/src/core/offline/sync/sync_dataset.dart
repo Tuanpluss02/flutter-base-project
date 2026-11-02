@@ -4,7 +4,7 @@ import 'package:pristie/src/core/offline/policy/offline_policy.dart';
 import 'package:pristie/src/core/offline/sync/sync_send_outcome.dart';
 import 'package:pristie/src/core/result/result.dart';
 
-part 'sync_dataset.freezed.dart';
+part '../../../../generated/src/core/offline/sync/sync_dataset.freezed.dart';
 
 /// UI-facing sync state for one offline-enabled feature.
 enum SyncStatus {

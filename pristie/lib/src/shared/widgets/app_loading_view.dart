@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 
 class AppLoadingView extends StatelessWidget {
   const AppLoadingView({super.key});

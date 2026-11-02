@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'app_failure.freezed.dart';
+part '../../../generated/src/core/error/app_failure.freezed.dart';
 
 /// Closed failure hierarchy representing all domain and infrastructure failures.
 @freezed

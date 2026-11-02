@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pristie/src/app/app_router.gr.dart';
 import 'package:pristie/src/app/injection.dart';
 import 'package:pristie/src/core/presentation/paged_state.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 import 'package:pristie/src/shared/widgets/app_button.dart';
 import 'package:pristie/src/shared/widgets/app_empty_view.dart';
 import 'package:pristie/src/shared/widgets/app_error_view.dart';

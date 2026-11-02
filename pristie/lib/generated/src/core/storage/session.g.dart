@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'session.dart';
+part of '../../../../src/core/storage/session.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

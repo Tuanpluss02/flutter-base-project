@@ -19,7 +19,7 @@ import 'package:pristie/src/features/home/presentation/pages/home_page.dart';
 import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:pristie/src/features/settings/presentation/pages/settings_page.dart';
 import 'package:pristie/src/features/settings/settings.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 
 import '../core/storage/fakes/in_memory_secure_storage.dart';
 import 'support/fakes.dart';

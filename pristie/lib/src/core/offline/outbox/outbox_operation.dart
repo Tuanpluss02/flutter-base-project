@@ -5,7 +5,7 @@ import 'package:pristie/src/core/offline/policy/offline_policy.dart';
 import 'package:pristie/src/core/scope/data_scope.dart';
 import 'package:uuid/uuid.dart';
 
-part 'outbox_operation.freezed.dart';
+part '../../../../generated/src/core/offline/outbox/outbox_operation.freezed.dart';
 
 /// Lifecycle state of one durable outbox operation.
 enum OutboxState {

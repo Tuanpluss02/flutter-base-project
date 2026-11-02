@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 import 'package:pristie/src/shared/widgets/app_empty_view.dart';
 import 'package:pristie/src/shared/widgets/app_loading_view.dart';
 

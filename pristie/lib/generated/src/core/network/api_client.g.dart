@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_client.dart';
+part of '../../../../src/core/network/api_client.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

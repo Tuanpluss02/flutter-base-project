@@ -1,11 +1,40 @@
 targets:
   $default:
     builders:
+      source_gen|combining_builder:
+        generate_for:
+          - lib/src/**.dart
+        options:
+          build_extensions:
+            '^lib/{{}}.dart': 'lib/generated/{{}}.g.dart'
+      freezed|freezed:
+        generate_for:
+          - lib/src/**.dart
+        options:
+          build_extensions:
+            '^lib/{{}}.dart': 'lib/generated/{{}}.freezed.dart'
       json_serializable:
+        generate_for:
+          - lib/src/**.dart
         options:
           field_rename: snake
           explicit_to_json: true
           include_if_null: false
+      retrofit_generator:
+        generate_for:
+          - lib/src/**.dart
+      injectable_generator:injectable_builder:
+        generate_for:
+          - lib/src/**.dart
+      injectable_generator:injectable_config_builder:
+        generate_for:
+          - lib/src/**.dart
+      auto_route_generator:auto_route_generator:
+        generate_for:
+          - lib/src/**.dart
+      auto_route_generator:auto_router_generator:
+        generate_for:
+          - lib/src/**.dart
       slang_build_runner:
         enabled: false
       slang_build_runner:legacy:
@@ -15,7 +44,7 @@ targets:
           fallback_strategy: base_locale
           input_directory: lib/src/l10n
           input_file_pattern: .i18n.json
-          output_directory: lib/src/l10n
+          output_directory: lib/generated/l10n
           output_file_name: strings.g.dart
           flutter_integration: true
           timestamp: false

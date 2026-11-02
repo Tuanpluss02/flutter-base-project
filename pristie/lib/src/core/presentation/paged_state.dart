@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../error/app_failure.dart';
 import '../result/result.dart';
 
-part 'paged_state.freezed.dart';
+part '../../../generated/src/core/presentation/paged_state.freezed.dart';
 
 @freezed
 abstract class PagedState<T> with _$PagedState<T> {

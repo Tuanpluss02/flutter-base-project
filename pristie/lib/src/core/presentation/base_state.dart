@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../error/app_failure.dart';
 
-part 'base_state.freezed.dart';
+part '../../../generated/src/core/presentation/base_state.freezed.dart';
 
 @freezed
 sealed class BaseState<T> with _$BaseState<T> {

@@ -6,7 +6,7 @@ import 'package:pristie/src/core/error/app_failure.dart';
 import 'package:pristie/src/core/result/result.dart';
 import 'package:pristie/src/features/settings/domain/usecases/logout_use_case.dart';
 import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:pristie/src/l10n/strings.g.dart';
+import 'package:pristie/generated/l10n/strings.g.dart';
 
 import '../../support/fakes.dart';
 

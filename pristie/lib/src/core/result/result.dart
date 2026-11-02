@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pristie/src/core/error/app_failure.dart';
 
-part 'result.freezed.dart';
+part '../../../generated/src/core/result/result.freezed.dart';
 
 /// Typed result container representing either success with [data] or failure with [failure].
 @freezed
