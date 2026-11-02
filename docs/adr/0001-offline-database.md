@@ -23,7 +23,7 @@ The core base specifications mandate strict security gates (G1–G10 in `securit
 
 ## 2. Candidates Evaluated
 
-A dedicated evaluation harness was executed in `pristie/tool/offline_spike/` to evaluate two primary candidate stacks outside the core app codebase:
+A dedicated evaluation harness was executed in `tool/offline_spike/` to evaluate two primary candidate stacks outside the core app codebase:
 
 ### Candidate 1: `drift` (2.35.3) + `sqlcipher_flutter_libs` / `sqlite3` (3.8.0 with `sqlite3mc` hooks)
 - **Architecture:** High-level Dart ORM / query builder (`drift`) backed by `sqlite3` FFI.

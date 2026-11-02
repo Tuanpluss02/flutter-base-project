@@ -20,7 +20,7 @@ This directory contains standalone spike fixtures and verification tests evaluat
 
 From repo root:
 ```bash
-./pristie/tool/offline_spike/run_spike.sh
+./tool/offline_spike/run_spike.sh
 ```
 
 Or from this directory:
@@ -34,4 +34,4 @@ fvm flutter test test/offline_spike_test.dart
 - `sqlcipher_flutter_libs` is discontinued (`0.7.0+eol`) and replaced by Dart Native Assets / build hooks in `package:sqlite3` 3.x.
 - Drift's native encryption path requires Dart Native Assets build hooks (`hooks: user_defines: sqlite3: source: sqlite3mc`), which bundles `SQLite3MultipleCiphers`. If misconfigured or if hooks fail, it can silently fall back to unencrypted standard SQLite.
 - `sqflite_sqlcipher` delegates directly to official Zetetic SQLCipher binaries on Android (`net.zetetic:sqlcipher-android`) and iOS (`SQLCipher 4.10.0` pod). It requires no build hooks, no C toolchain orchestration, and introduces zero code generation dependencies or analyzer constraint conflicts.
-- For complete rationale, security requirements, key lifecycle, and backup exclusion policies, refer to [ADR 0001](../../../docs/adr/0001-offline-database.md).
+- For complete rationale, security requirements, key lifecycle, and backup exclusion policies, refer to [ADR 0001](../../docs/adr/0001-offline-database.md).

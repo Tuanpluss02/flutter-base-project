@@ -1,36 +1,45 @@
-.PHONY: all ci get gen analyze test format config-check boundary-check secret-check run-dev build-prod
+.PHONY: all ci get gen analyze test format config-check boundary-check secret-check run-dev run-stg build-apk-dev build-prod test-scripts
 
 all: ci
 
 ci:
-	cd pristie && bash scripts/ci_local.sh
+	scripts/ci_local.sh
 
 get:
-	cd pristie && fvm flutter pub get
+	fvm flutter pub get
 
 gen:
-	cd pristie && fvm dart run build_runner build -d
+	fvm dart run build_runner build -d
 
 analyze:
-	cd pristie && fvm flutter analyze --fatal-infos --fatal-warnings
+	fvm flutter analyze --fatal-infos --fatal-warnings
 
 test:
-	cd pristie && fvm flutter test
+	fvm flutter test
 
 format:
-	cd pristie && fvm dart format --output=none --set-exit-if-changed .
+	fvm dart format --output=none --set-exit-if-changed .
 
 config-check:
-	cd pristie && scripts/check_config.sh
+	scripts/check_config.sh
 
 boundary-check:
-	cd pristie && scripts/check_boundaries.sh
+	scripts/check_boundaries.sh
 
 secret-check:
-	cd pristie && scripts/check_secrets.sh
+	scripts/check_secrets.sh
 
 run-dev:
-	cd pristie && fvm flutter run --dart-define-from-file=config/env_dev.env
+	fvm flutter run --dart-define-from-file=config/env_dev.env
+
+run-stg:
+	fvm flutter run --dart-define-from-file=config/env_stg.env
+
+build-apk-dev:
+	fvm flutter build apk --debug --dart-define-from-file=config/env_dev.env
 
 build-prod:
-	cd pristie && fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+	fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+
+test-scripts:
+	bash test/scripts/run_all_tests.sh

@@ -50,7 +50,7 @@ Acceptance cases: <links or test names>
 - Create only required layers and keep DTO, entity, and UI state in their owning layer.
 - Add app route and DI registration, locale keys and translations, and behavior tests under `test/src/features/<feature_name>/`.
 - Cover loading, empty, error, retry, and cancellation when applicable. Verify UI semantics and text scaling.
-- Run these commands from `pristie/`:
+- Run these commands from the repository root:
 
 ```bash
 fvm dart run slang

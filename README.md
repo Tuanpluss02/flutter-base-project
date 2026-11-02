@@ -86,8 +86,8 @@ The CI script verifies:
 
 ## 6. Documentation & References
 
-- [Toolchain Specifications](../docs/toolchain.md)
-- [Release Verification Runbook](../docs/runbooks/release-verification.md)
-- [IDE Launch Configurations](../docs/ide-run-configs.md)
-- [Core Base Design Specifications](../docs/superpowers/specs/2026-10-30-flutter-core-base-design.md)
-- [Implementation Plan](../docs/superpowers/plans/2026-10-31-flutter-core-base-implementation.md)
+- [Toolchain Specifications](docs/toolchain.md)
+- [Release Verification Runbook](docs/runbooks/release-verification.md)
+- [IDE Launch Configurations](docs/ide-run-configs.md)
+- [Core Base Design Specifications](docs/superpowers/specs/2026-10-30-flutter-core-base-design.md)
+- [Implementation Plan](docs/superpowers/plans/2026-10-31-flutter-core-base-implementation.md)

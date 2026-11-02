@@ -46,7 +46,6 @@ jobs:
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Run Canonical CI Verification (Steps 1-9, 12, and secret scan)
-        working-directory: pristie
         run: |
           chmod +x scripts/*.sh
           scripts/ci_local.sh
@@ -78,7 +77,6 @@ jobs:
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Build Android App Bundle (Prod)
-        working-directory: pristie
         run: |
           fvm flutter pub get --enforce-lockfile
           fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
@@ -91,7 +89,7 @@ jobs:
       - name: Unpack and Scan Android Artifact for Leaks
         run: |
           mkdir -p /tmp/unpacked-aab
-          unzip -q pristie/build/app/outputs/bundle/release/app-release.aab -d /tmp/unpacked-aab || unzip -q pristie/build/app/outputs/bundle/*/*.aab -d /tmp/unpacked-aab
+          unzip -q build/app/outputs/bundle/release/app-release.aab -d /tmp/unpacked-aab || unzip -q build/app/outputs/bundle/*/*.aab -d /tmp/unpacked-aab
           gitleaks dir /tmp/unpacked-aab --redact --exit-code 1
 
   ios:
@@ -115,7 +113,6 @@ jobs:
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Build iOS Release (Prod, No Codesign)
-        working-directory: pristie
         run: |
           fvm flutter pub get --enforce-lockfile
           fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env

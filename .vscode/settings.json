@@ -1,9 +1,9 @@
 {
-  "dart.flutterSdkPath": "pristie/.fvm/flutter_sdk",
+  "dart.flutterSdkPath": ".fvm/versions/3.47.8",
   "search.exclude": {
-    "**/pristie/.fvm": true
+    "**/.fvm": true
   },
   "files.watcherExclude": {
-    "**/pristie/.fvm": true
+    "**/.fvm": true
   }
 }

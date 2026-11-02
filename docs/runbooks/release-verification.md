@@ -17,10 +17,9 @@ This runbook outlines the required steps to verify and validate a release candid
 
 ## 1. Local CI Verification Gate
 
-Run the local full verification script from the `pristie/` directory:
+Run the local full verification script from the repository root:
 
 ```bash
-cd pristie
 bash scripts/ci_local.sh
 ```
 
@@ -45,18 +44,16 @@ Build production release binaries using `--dart-define-from-file=config/env_prod
 ### 2.1 Android AppBundle (AAB)
 
 ```bash
-cd pristie
 fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
 ```
-- **Output:** `pristie/build/app/outputs/bundle/release/app-release.aab`
+- **Output:** `build/app/outputs/bundle/release/app-release.aab`
 
 ### 2.2 iOS Release Build
 
 ```bash
-cd pristie
 fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env
 ```
-- **Output:** `pristie/build/ios/iphoneos/Runner.app`
+- **Output:** `build/ios/iphoneos/Runner.app`
 
 ---
 
@@ -69,7 +66,7 @@ Verify that release artifacts contain no hardcoded secrets or insecure configura
 1. Extract the generated AAB using `unzip` to a temporary directory:
    ```bash
    mkdir -p /tmp/pristie-aab-check
-   unzip -q pristie/build/app/outputs/bundle/release/app-release.aab -d /tmp/pristie-aab-check
+   unzip -q build/app/outputs/bundle/release/app-release.aab -d /tmp/pristie-aab-check
    ```
 2. Scan extracted files for credentials/secrets with Gitleaks:
    ```bash
@@ -87,19 +84,19 @@ Verify that release artifacts contain no hardcoded secrets or insecure configura
 
 ### 3.2 iOS Runner.app Inspection
 
-1. Inspect `Info.plist` inside `pristie/build/ios/iphoneos/Runner.app/Info.plist`:
+1. Inspect `Info.plist` inside `build/ios/iphoneos/Runner.app/Info.plist`:
    ```bash
-   plutil -p pristie/build/ios/iphoneos/Runner.app/Info.plist | grep -i arbitrary
+   plutil -p build/ios/iphoneos/Runner.app/Info.plist | grep -i arbitrary
    ```
    *Expected:* No output (ATS default active, `NSAllowsArbitraryLoads` is NOT present).
 2. Verify `UIFileSharingEnabled`:
    ```bash
-   plutil -p pristie/build/ios/iphoneos/Runner.app/Info.plist | grep -i UIFileSharingEnabled
+   plutil -p build/ios/iphoneos/Runner.app/Info.plist | grep -i UIFileSharingEnabled
    ```
    *Expected:* `"UIFileSharingEnabled" => 0` (or `false`).
 3. Scan `Runner.app` directory with Gitleaks:
    ```bash
-   gitleaks dir pristie/build/ios/iphoneos/Runner.app --redact --exit-code 1
+   gitleaks dir build/ios/iphoneos/Runner.app --redact --exit-code 1
    ```
 
 ---

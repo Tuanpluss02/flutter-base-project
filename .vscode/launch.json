@@ -5,8 +5,8 @@
       "name": "Pristie Dev (debug)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "debug"
     },
@@ -14,8 +14,8 @@
       "name": "Pristie Dev (profile)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "profile"
     },
@@ -23,8 +23,8 @@
       "name": "Pristie Dev (release)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "release"
     },
@@ -32,8 +32,8 @@
       "name": "Pristie Staging (debug)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_stg.env"],
       "flutterMode": "debug"
     },
@@ -41,8 +41,8 @@
       "name": "Pristie Staging (profile)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_stg.env"],
       "flutterMode": "profile"
     },
@@ -50,8 +50,8 @@
       "name": "Pristie Staging (release)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_stg.env"],
       "flutterMode": "release"
     },
@@ -59,8 +59,8 @@
       "name": "Pristie Prod (debug)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "debug"
     },
@@ -68,8 +68,8 @@
       "name": "Pristie Prod (profile)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "profile"
     },
@@ -77,8 +77,8 @@
       "name": "Pristie Prod (release)",
       "type": "dart",
       "request": "launch",
-      "program": "${workspaceFolder}/pristie/lib/main.dart",
-      "cwd": "${workspaceFolder}/pristie",
+      "program": "${workspaceFolder}/lib/main.dart",
+      "cwd": "${workspaceFolder}",
       "args": ["--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "release"
     }
