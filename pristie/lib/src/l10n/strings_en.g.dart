@@ -41,18 +41,18 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
-	late final Translations$app$en app = Translations$app$en._(_root);
-	late final Translations$common$en common = Translations$common$en._(_root);
-	late final Translations$login$en login = Translations$login$en._(_root);
-	late final Translations$home$en home = Translations$home$en._(_root);
-	late final Translations$settings$en settings = Translations$settings$en._(_root);
-	late final Translations$error$en error = Translations$error$en._(_root);
-	late final Translations$offline$en offline = Translations$offline$en._(_root);
+	late final Translations$app$en app = Translations$app$en.internal(_root);
+	late final Translations$common$en common = Translations$common$en.internal(_root);
+	late final Translations$login$en login = Translations$login$en.internal(_root);
+	late final Translations$home$en home = Translations$home$en.internal(_root);
+	late final Translations$settings$en settings = Translations$settings$en.internal(_root);
+	late final Translations$error$en error = Translations$error$en.internal(_root);
+	late final Translations$offline$en offline = Translations$offline$en.internal(_root);
 }
 
 // Path: app
 class Translations$app$en {
-	Translations$app$en._(this._root);
+	Translations$app$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -64,7 +64,7 @@ class Translations$app$en {
 
 // Path: common
 class Translations$common$en {
-	Translations$common$en._(this._root);
+	Translations$common$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -85,7 +85,7 @@ class Translations$common$en {
 
 // Path: login
 class Translations$login$en {
-	Translations$login$en._(this._root);
+	Translations$login$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -103,13 +103,16 @@ class Translations$login$en {
 	/// en: 'Sign in'
 	String get submit => 'Sign in';
 
+	/// en: 'This field is required'
+	String get required => 'This field is required';
+
 	/// en: 'Incorrect email or password'
 	String get invalidCredentials => 'Incorrect email or password';
 }
 
 // Path: home
 class Translations$home$en {
-	Translations$home$en._(this._root);
+	Translations$home$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -120,11 +123,14 @@ class Translations$home$en {
 
 	/// en: 'Load more'
 	String get loadMore => 'Load more';
+
+	/// en: 'Demo item $id'
+	String item({required Object id}) => 'Demo item ${id}';
 }
 
 // Path: settings
 class Translations$settings$en {
-	Translations$settings$en._(this._root);
+	Translations$settings$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -144,11 +150,26 @@ class Translations$settings$en {
 
 	/// en: 'Are you sure you want to sign out?'
 	String get logoutConfirm => 'Are you sure you want to sign out?';
+
+	/// en: 'System'
+	String get themeSystem => 'System';
+
+	/// en: 'Light'
+	String get themeLight => 'Light';
+
+	/// en: 'Dark'
+	String get themeDark => 'Dark';
+
+	/// en: 'English'
+	String get english => 'English';
+
+	/// en: 'Vietnamese'
+	String get vietnamese => 'Vietnamese';
 }
 
 // Path: error
 class Translations$error$en {
-	Translations$error$en._(this._root);
+	Translations$error$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -196,7 +217,7 @@ class Translations$error$en {
 
 // Path: offline
 class Translations$offline$en {
-	Translations$offline$en._(this._root);
+	Translations$offline$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -238,14 +259,21 @@ extension on Translations {
 			'login.email' => 'Email',
 			'login.password' => 'Password',
 			'login.submit' => 'Sign in',
+			'login.required' => 'This field is required',
 			'login.invalidCredentials' => 'Incorrect email or password',
 			'home.title' => 'Home',
 			'home.loadMore' => 'Load more',
+			'home.item' => ({required Object id}) => 'Demo item ${id}',
 			'settings.title' => 'Settings',
 			'settings.theme' => 'Theme',
 			'settings.language' => 'Language',
 			'settings.logout' => 'Sign out',
 			'settings.logoutConfirm' => 'Are you sure you want to sign out?',
+			'settings.themeSystem' => 'System',
+			'settings.themeLight' => 'Light',
+			'settings.themeDark' => 'Dark',
+			'settings.english' => 'English',
+			'settings.vietnamese' => 'Vietnamese',
 			'error.network' => 'No internet connection. Check your connection and try again.',
 			'error.timeout' => 'The request timed out. Try again.',
 			'error.unauthorized' => 'Your session has expired. Please sign in again.',

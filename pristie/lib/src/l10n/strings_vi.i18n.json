@@ -13,18 +13,25 @@
     "email": "Email",
     "password": "Mật khẩu",
     "submit": "Đăng nhập",
+    "required": "Trường này là bắt buộc",
     "invalidCredentials": "Email hoặc mật khẩu không đúng"
   },
   "home": {
     "title": "Trang chủ",
-    "loadMore": "Tải thêm"
+    "loadMore": "Tải thêm",
+    "item": "Mục mẫu $id"
   },
   "settings": {
     "title": "Cài đặt",
     "theme": "Giao diện",
     "language": "Ngôn ngữ",
     "logout": "Đăng xuất",
-    "logoutConfirm": "Bạn có chắc muốn đăng xuất?"
+    "logoutConfirm": "Bạn có chắc muốn đăng xuất?",
+    "themeSystem": "Theo hệ thống",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt"
   },
   "error": {
     "network": "Không có kết nối mạng. Kiểm tra kết nối và thử lại.",

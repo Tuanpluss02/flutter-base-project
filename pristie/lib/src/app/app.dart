@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pristie/src/app/app_router.dart';
 import 'package:pristie/src/core/auth/auth_state.dart';
 import 'package:pristie/src/core/config/app_config.dart';
+import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:pristie/src/l10n/strings.g.dart';
 import 'package:pristie/src/shared/theme/app_theme.dart';
 
@@ -31,6 +34,7 @@ class App extends StatelessWidget {
     required this.config,
     required this.router,
     required this.authState,
+    this.settingsCubit,
     this.themeMode = ThemeMode.system,
     super.key,
   });
@@ -44,7 +48,10 @@ class App extends StatelessWidget {
   /// Restored or resolved authentication state.
   final AuthState authState;
 
-  /// Initial or dynamic theme mode.
+  /// Settings state driving theme and locale changes at runtime.
+  final SettingsCubit? settingsCubit;
+
+  /// Fallback theme mode when [settingsCubit] is not supplied.
   final ThemeMode themeMode;
 
   @override
@@ -52,19 +59,32 @@ class App extends StatelessWidget {
     return TranslationProvider(
       child: Builder(
         builder: (context) {
-          return MaterialApp.router(
-            title: config.appName,
-            theme: AppTheme.light,
-            darkTheme: AppTheme.dark,
-            themeMode: themeMode,
-            locale: TranslationProvider.of(context).flutterLocale,
-            supportedLocales: AppLocaleUtils.supportedLocales,
-            routerConfig: router.config(
-              deepLinkBuilder: (_) => DeepLink.defaultPath,
-              reevaluateListenable: router.authGuard,
-            ),
+          final settings = settingsCubit;
+          if (settings == null) {
+            return _buildRouterApp(context, themeMode);
+          }
+          return BlocBuilder<SettingsCubit, SettingsState>(
+            bloc: settings,
+            builder: (context, state) =>
+                _buildRouterApp(context, state.themeMode),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildRouterApp(BuildContext context, ThemeMode mode) {
+    return MaterialApp.router(
+      title: config.appName,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: mode,
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      routerConfig: router.config(
+        deepLinkBuilder: (_) => DeepLink.defaultPath,
+        reevaluateListenable: router.authGuard,
       ),
     );
   }
