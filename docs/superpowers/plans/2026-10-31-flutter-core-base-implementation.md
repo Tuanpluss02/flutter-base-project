@@ -1147,7 +1147,7 @@ class SyncDataset with _$SyncDataset {
 }
 ```
 
-- [ ] **Step 1: Viết test outbox/sync thất bại trước**
+- [x] **Step 1: Viết test outbox/sync thất bại trước**
 
 Assert:
 - enqueue operation trong cùng transaction với local row; idempotency key UUID bất biến qua retry/restart;
@@ -1159,23 +1159,23 @@ Assert:
 - resync `410`/`resync_required`: staging + atomic swap, outbox/pending overlay preserved;
 - OFFLINE_ENABLED=false → worker không start.
 
-- [ ] **Step 2: Implement outbox types + worker**
+- [x] **Step 2: Implement outbox types + worker**
 
 `OutboxOperation` Freezed đúng field spec offline-first §5 (id, dataScope, dataScopeEpoch, entityKey, operation, payloadVersion, payloadJson, baseVersion, sequence, state, attemptCount, nextAttemptAt, leaseOwner, leaseExpiresAt, idempotencyKey, createdAt). `OutboxState` enum: `pending, syncing, synced, conflict, needsAttention, discarded`. Worker: claim theo `DataScope` + sequence, lease; gọi `SyncSendOutcome`; ack + update row trong transaction; backoff jitter; không xóa pending/conflict.
 
-- [ ] **Step 3: Implement sync coordinator + conflict**
+- [x] **Step 3: Implement sync coordinator + conflict**
 
 Push trước, pull delta theo dataset; apply page + cursor trong một transaction; cursor opaque; `min_supported_cursor`/`resync_required` → staging generation + atomic swap, giữ outbox/pending overlays; `SyncConflict` chứa localOverlay/remoteSnapshot/baseVersion/serverVersion; `AppFailure.conflict()` không dùng cho sync.
 
-- [ ] **Step 4: Implement fake sync server cho test**
+- [x] **Step 4: Implement fake sync server cho test**
 
 `test/src/core/offline/fakes/fake_sync_server.dart` implement các kịch bản: success, 409 REQUEST_IN_PROGRESS, 409 VERSION_MISMATCH, 412, 401, 403, 422, 429 + Retry-After, 5xx, network, 410 resync. Không network thật.
 
-- [ ] **Step 5: Home feature opt-in offline read**
+- [x] **Step 5: Home feature opt-in offline read**
 
 `OfflineHomeRepository` đọc local trước; refresh nền cập nhật cache; state giữ `data` + `SyncStatus` (`offline/stale/syncing/pending/conflict`); UI hiển thị banner localized; không emit loading/error thay cached data; mutation vẫn online-only (không có nút mutation offline).
 
-- [ ] **Step 6: Chạy test + analyze + build + commit**
+- [x] **Step 6: Chạy test + analyze + build + commit**
 
 ```bash
 cd pristie
