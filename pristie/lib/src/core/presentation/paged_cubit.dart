@@ -5,8 +5,12 @@ import '../result/result.dart';
 import 'paged_state.dart';
 
 class PagedCubit<T> extends Cubit<PagedState<T>> {
-  PagedCubit({required this._loadPage, required this._idOf})
-    : super(PagedState<T>());
+  PagedCubit({
+    required PagedLoader<T> loadPage,
+    required String Function(T) idOf,
+  })  : _loadPage = loadPage,
+        _idOf = idOf,
+        super(PagedState<T>());
 
   final PagedLoader<T> _loadPage;
   final String Function(T) _idOf;
