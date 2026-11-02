@@ -8,9 +8,9 @@ class PagedCubit<T> extends Cubit<PagedState<T>> {
   PagedCubit({
     required PagedLoader<T> loadPage,
     required String Function(T) idOf,
-  })  : _loadPage = loadPage,
-        _idOf = idOf,
-        super(PagedState<T>());
+  }) : _loadPage = loadPage,
+       _idOf = idOf,
+       super(PagedState<T>());
 
   final PagedLoader<T> _loadPage;
   final String Function(T) _idOf;
