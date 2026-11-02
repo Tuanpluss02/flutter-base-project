@@ -6,3 +6,16 @@ targets:
           field_rename: snake
           explicit_to_json: true
           include_if_null: false
+      slang_build_runner:
+        enabled: false
+      slang_build_runner:legacy:
+        enabled: true
+        options:
+          base_locale: en
+          fallback_strategy: base_locale
+          input_directory: lib/src/l10n
+          input_file_pattern: .i18n.json
+          output_directory: lib/src/l10n
+          output_file_name: strings.g.dart
+          flutter_integration: true
+          timestamp: false
