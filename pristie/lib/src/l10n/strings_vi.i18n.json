@@ -54,6 +54,7 @@
     "pending": "Đang chờ đồng bộ",
     "syncing": "Đang đồng bộ",
     "conflict": "Mục này cần bạn xử lý",
+    "needsAttention": "Một số thay đổi cần bạn xử lý",
     "lastSynced": "Đồng bộ lần cuối"
   }
 }
