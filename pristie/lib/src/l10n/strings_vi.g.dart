@@ -11,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsVi with BaseTranslations<AppLocale, Translations> implements Translations {
+class TranslationsVi extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsVi({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -21,7 +21,8 @@ class TranslationsVi with BaseTranslations<AppLocale, Translations> implements T
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
 		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -30,7 +31,7 @@ class TranslationsVi with BaseTranslations<AppLocale, Translations> implements T
 	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => _meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key) ?? super[key];
 
 	late final TranslationsVi _root = this; // ignore: unused_field
 
@@ -48,8 +49,8 @@ class TranslationsVi with BaseTranslations<AppLocale, Translations> implements T
 }
 
 // Path: app
-class _Translations$app$vi implements Translations$app$en {
-	_Translations$app$vi._(this._root);
+class _Translations$app$vi extends Translations$app$en {
+	_Translations$app$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -58,8 +59,8 @@ class _Translations$app$vi implements Translations$app$en {
 }
 
 // Path: common
-class _Translations$common$vi implements Translations$common$en {
-	_Translations$common$vi._(this._root);
+class _Translations$common$vi extends Translations$common$en {
+	_Translations$common$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -71,8 +72,8 @@ class _Translations$common$vi implements Translations$common$en {
 }
 
 // Path: login
-class _Translations$login$vi implements Translations$login$en {
-	_Translations$login$vi._(this._root);
+class _Translations$login$vi extends Translations$login$en {
+	_Translations$login$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -85,8 +86,8 @@ class _Translations$login$vi implements Translations$login$en {
 }
 
 // Path: home
-class _Translations$home$vi implements Translations$home$en {
-	_Translations$home$vi._(this._root);
+class _Translations$home$vi extends Translations$home$en {
+	_Translations$home$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -96,8 +97,8 @@ class _Translations$home$vi implements Translations$home$en {
 }
 
 // Path: settings
-class _Translations$settings$vi implements Translations$settings$en {
-	_Translations$settings$vi._(this._root);
+class _Translations$settings$vi extends Translations$settings$en {
+	_Translations$settings$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -110,8 +111,8 @@ class _Translations$settings$vi implements Translations$settings$en {
 }
 
 // Path: error
-class _Translations$error$vi implements Translations$error$en {
-	_Translations$error$vi._(this._root);
+class _Translations$error$vi extends Translations$error$en {
+	_Translations$error$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 
@@ -132,8 +133,8 @@ class _Translations$error$vi implements Translations$error$en {
 }
 
 // Path: offline
-class _Translations$offline$vi implements Translations$offline$en {
-	_Translations$offline$vi._(this._root);
+class _Translations$offline$vi extends Translations$offline$en {
+	_Translations$offline$vi._(TranslationsVi root) : this._root = root, super.internal(root);
 
 	final TranslationsVi _root; // ignore: unused_field
 

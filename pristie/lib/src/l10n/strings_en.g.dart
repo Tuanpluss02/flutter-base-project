@@ -41,18 +41,18 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
-	late final Translations$app$en app = Translations$app$en._(_root);
-	late final Translations$common$en common = Translations$common$en._(_root);
-	late final Translations$login$en login = Translations$login$en._(_root);
-	late final Translations$home$en home = Translations$home$en._(_root);
-	late final Translations$settings$en settings = Translations$settings$en._(_root);
-	late final Translations$error$en error = Translations$error$en._(_root);
-	late final Translations$offline$en offline = Translations$offline$en._(_root);
+	late final Translations$app$en app = Translations$app$en.internal(_root);
+	late final Translations$common$en common = Translations$common$en.internal(_root);
+	late final Translations$login$en login = Translations$login$en.internal(_root);
+	late final Translations$home$en home = Translations$home$en.internal(_root);
+	late final Translations$settings$en settings = Translations$settings$en.internal(_root);
+	late final Translations$error$en error = Translations$error$en.internal(_root);
+	late final Translations$offline$en offline = Translations$offline$en.internal(_root);
 }
 
 // Path: app
 class Translations$app$en {
-	Translations$app$en._(this._root);
+	Translations$app$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -64,7 +64,7 @@ class Translations$app$en {
 
 // Path: common
 class Translations$common$en {
-	Translations$common$en._(this._root);
+	Translations$common$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -85,7 +85,7 @@ class Translations$common$en {
 
 // Path: login
 class Translations$login$en {
-	Translations$login$en._(this._root);
+	Translations$login$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -109,7 +109,7 @@ class Translations$login$en {
 
 // Path: home
 class Translations$home$en {
-	Translations$home$en._(this._root);
+	Translations$home$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -124,7 +124,7 @@ class Translations$home$en {
 
 // Path: settings
 class Translations$settings$en {
-	Translations$settings$en._(this._root);
+	Translations$settings$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -148,7 +148,7 @@ class Translations$settings$en {
 
 // Path: error
 class Translations$error$en {
-	Translations$error$en._(this._root);
+	Translations$error$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -196,7 +196,7 @@ class Translations$error$en {
 
 // Path: offline
 class Translations$offline$en {
-	Translations$offline$en._(this._root);
+	Translations$offline$en.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
