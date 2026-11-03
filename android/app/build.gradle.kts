@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bolt.pristie"
+    namespace = "com.stormx.base"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,18 +20,30 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.bolt.pristie"
+        applicationId = "com.stormx.base"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        resValue("string", "app_name", "Base")
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+    flavorDimensions += "environment"
+
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            applicationIdSuffix = ".dev"
+            resValue("string", "app_name", "Base Dev")
+        }
+        create("uat") {
+            dimension = "environment"
+            applicationIdSuffix = ".uat"
+            resValue("string", "app_name", "Base UAT")
+        }
+        create("prod") {
+            dimension = "environment"
+            resValue("string", "app_name", "Base")
         }
     }
 }

@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/app/app.dart';
-import 'package:pristie/src/app/app_router.dart';
-import 'package:pristie/src/app/injection.dart';
-import 'package:pristie/src/app/observability/app_bloc_observer.dart';
-import 'package:pristie/src/app/observability/error_handlers.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
-import 'package:pristie/src/core/observability/crash_reporter.dart';
-import 'package:pristie/src/core/storage/local_storage.dart';
-import 'package:pristie/src/core/storage/secure_storage.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
-import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:base/src/app/app.dart';
+import 'package:base/src/app/app_router.dart';
+import 'package:base/src/app/injection.dart';
+import 'package:base/src/app/observability/app_bloc_observer.dart';
+import 'package:base/src/app/observability/error_handlers.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/observability/app_logger.dart';
+import 'package:base/src/core/observability/crash_reporter.dart';
+import 'package:base/src/core/storage/local_storage.dart';
+import 'package:base/src/core/storage/secure_storage.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
+import 'package:base/src/features/settings/presentation/cubit/settings_cubit.dart';
 
 /// Initializes application infrastructure, executes fail-closed checks, and launches root UI.
 Future<void> bootstrap({

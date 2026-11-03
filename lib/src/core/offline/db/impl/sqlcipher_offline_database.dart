@@ -3,17 +3,17 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/backup_exclusion.dart';
-import 'package:pristie/src/core/offline/db/database_key_manager.dart';
-import 'package:pristie/src/core/offline/db/impl/sqlcipher_connection.dart';
-import 'package:pristie/src/core/offline/db/migrations.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/policy/offline_config.dart';
-import 'package:pristie/src/core/offline/scope/data_scope_store.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/backup_exclusion.dart';
+import 'package:base/src/core/offline/db/database_key_manager.dart';
+import 'package:base/src/core/offline/db/impl/sqlcipher_connection.dart';
+import 'package:base/src/core/offline/db/migrations.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/policy/offline_config.dart';
+import 'package:base/src/core/offline/scope/data_scope_store.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
 /// SQLCipher-backed [OfflineDatabase].
@@ -34,7 +34,7 @@ final class SqlcipherOfflineDatabase implements OfflineDatabase {
        _opener = opener ?? openSqlcipherConnection;
 
   /// File name used inside the application support directory.
-  static const databaseFileName = 'pristie_offline.db';
+  static const databaseFileName = 'base_offline.db';
 
   final DatabaseKeyManager _keyManager;
   final BackupExclusion _backupExclusion;

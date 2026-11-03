@@ -87,8 +87,8 @@ validate_config_file() {
       if (expected_env != "" && seen["APP_ENV"] != expected_env) {
         fail("APP_ENV in " FILENAME " is \"" seen["APP_ENV"] "\", expected \"" expected_env "\"")
       }
-      if (seen["APP_ENV"] != "dev" && seen["APP_ENV"] != "stg" && seen["APP_ENV"] != "prod") {
-        fail("APP_ENV in " FILENAME " must be dev, stg, or prod")
+      if (seen["APP_ENV"] != "dev" && seen["APP_ENV"] != "uat" && seen["APP_ENV"] != "prod") {
+        fail("APP_ENV in " FILENAME " must be dev, uat, or prod")
       }
       if (seen["API_BASE_URL"] !~ /^https:\/\/[^[:space:]]+$/) {
         fail("API_BASE_URL in " FILENAME " must start with https:// and contain no spaces")
@@ -199,7 +199,7 @@ echo "Validating environment configuration files in: $CONFIG_DIR"
 failed=0
 
 validate_config_file "$CONFIG_DIR/env_dev.env" "dev" || failed=1
-validate_config_file "$CONFIG_DIR/env_stg.env" "stg" || failed=1
+validate_config_file "$CONFIG_DIR/env_uat.env" "uat" || failed=1
 validate_config_file "$CONFIG_DIR/env_prod.env" "prod" || failed=1
 
 if [ "$failed" -ne 0 ]; then

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/offline/db/impl/sqlcipher_offline_database.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/impl/sqlcipher_offline_database.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +35,7 @@ void main() {
     });
 
     final database = await openSqlcipherConnection(
-      path: '/tmp/pristie_encrypted.db',
+      path: '/tmp/base_encrypted.db',
       password: 'base64-encoded-key',
       version: 1,
       onCreate: (OfflineDatabaseExecutor db) async {},
@@ -47,7 +47,7 @@ void main() {
     );
 
     expect(openArguments, isNotNull);
-    expect(openArguments!['path'], '/tmp/pristie_encrypted.db');
+    expect(openArguments!['path'], '/tmp/base_encrypted.db');
     expect(openArguments!['password'], 'base64-encoded-key');
     await database.close();
   });

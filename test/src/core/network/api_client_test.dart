@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/network/api_client.dart';
+import 'package:base/src/core/network/api_client.dart';
 
 class FakeHttpClientAdapter implements HttpClientAdapter {
   ResponseBody? nextResponse;

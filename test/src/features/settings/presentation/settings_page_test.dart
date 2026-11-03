@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/app/injection.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/features/settings/domain/usecases/logout_use_case.dart';
-import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:pristie/src/features/settings/presentation/pages/settings_page.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
-import 'package:pristie/src/shared/widgets/app_error_view.dart';
+import 'package:base/src/app/injection.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/features/settings/domain/usecases/logout_use_case.dart';
+import 'package:base/src/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:base/src/features/settings/presentation/pages/settings_page.dart';
+import 'package:base/generated/l10n/strings.g.dart';
+import 'package:base/src/shared/widgets/app_error_view.dart';
 
 import '../../support/fakes.dart';
 import '../../support/test_app.dart';

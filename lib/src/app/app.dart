@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:pristie/src/app/app_router.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
-import 'package:pristie/src/shared/theme/app_theme.dart';
+import 'package:base/src/app/app_router.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:base/generated/l10n/strings.g.dart';
+import 'package:base/src/shared/theme/app_theme.dart';
 
 /// Minimal fail-closed application presented when startup configuration fails.
 class ConfigErrorApp extends StatelessWidget {

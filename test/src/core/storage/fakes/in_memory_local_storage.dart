@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/storage/local_storage.dart';
+import 'package:base/src/core/storage/local_storage.dart';
 
 /// In-memory fake implementation of [LocalStorage] for testing.
 final class InMemoryLocalStorage implements LocalStorage {

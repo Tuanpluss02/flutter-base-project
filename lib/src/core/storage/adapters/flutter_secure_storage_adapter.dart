@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:pristie/src/core/storage/secure_storage.dart';
+import 'package:base/src/core/storage/secure_storage.dart';
 
 /// Secure storage adapter wrapping [FlutterSecureStorage] with hardened options.
 final class FlutterSecureStorageAdapter implements SecureStorage {

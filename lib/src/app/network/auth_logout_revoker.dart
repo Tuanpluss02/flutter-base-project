@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/network/app_failure_mapper.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/network/app_failure_mapper.dart';
+import 'package:base/src/core/result/result.dart';
 
 /// Concrete [LogoutRevoker] revoking credentials remotely on dedicated no-auth transport.
 final class AuthLogoutRevoker implements LogoutRevoker {

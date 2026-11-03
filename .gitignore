@@ -33,8 +33,6 @@ migrate_working_dir/
 .pub/
 build/
 /coverage/
-lib/src/l10n/_missing_translations.json
-lib/src/l10n/_unused_translations.json
 
 # Symbolication related
 app.*.symbols

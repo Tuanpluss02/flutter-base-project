@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
 
 import '../../domain/entities/demo_item.dart';
 

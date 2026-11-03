@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/policy/offline_policy.dart';
-import 'package:pristie/src/core/offline/sync/sync_send_outcome.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/policy/offline_policy.dart';
+import 'package:base/src/core/offline/sync/sync_send_outcome.dart';
+import 'package:base/src/core/result/result.dart';
 
 part '../../../../generated/src/core/offline/sync/sync_dataset.freezed.dart';
 

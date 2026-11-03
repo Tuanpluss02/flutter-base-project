@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_initializing_formals
 
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/sync/sync_conflict.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
-import 'package:pristie/src/core/offline/sync/sync_send_outcome.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/sync/sync_conflict.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/src/core/offline/sync/sync_send_outcome.dart';
+import 'package:base/src/core/result/result.dart';
 
 /// Handler invoked for one outbox mutation.
 typedef FakeSendHandler = Future<SyncSendOutcome> Function(

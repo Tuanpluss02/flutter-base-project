@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
-import 'package:pristie/src/app/app_router.gr.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
+import 'package:base/src/app/app_router.gr.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/auth/auth_state.dart';
 
 /// Central route guard synchronizing navigation decisions with authentication state.
 class AuthGuard extends AutoRouteGuard

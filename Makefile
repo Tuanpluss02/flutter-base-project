@@ -1,4 +1,4 @@
-.PHONY: all ci get gen analyze test format config-check boundary-check secret-check run-dev run-stg build-apk-dev build-prod test-scripts
+.PHONY: all ci get gen analyze test format config-check boundary-check secret-check run-dev run-uat run-prod build-apk-dev build-prod test-scripts
 
 all: ci
 
@@ -30,16 +30,19 @@ secret-check:
 	scripts/check_secrets.sh
 
 run-dev:
-	fvm flutter run --dart-define-from-file=config/env_dev.env
+	fvm flutter run --flavor dev --dart-define-from-file=config/env_dev.env
 
-run-stg:
-	fvm flutter run --dart-define-from-file=config/env_stg.env
+run-uat:
+	fvm flutter run --flavor uat --dart-define-from-file=config/env_uat.env
+
+run-prod:
+	fvm flutter run --flavor prod --dart-define-from-file=config/env_prod.env
 
 build-apk-dev:
-	fvm flutter build apk --debug --dart-define-from-file=config/env_dev.env
+	fvm flutter build apk --debug --flavor dev --dart-define-from-file=config/env_dev.env
 
 build-prod:
-	fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+	fvm flutter build appbundle --release --flavor prod --dart-define-from-file=config/env_prod.env
 
 test-scripts:
 	bash test/scripts/run_all_tests.sh

@@ -1,5 +1,5 @@
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 
 /// Local persistence contract exposed to the rest of the application.
 ///

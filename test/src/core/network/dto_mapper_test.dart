@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/network/api_client.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/network/api_client.dart';
+import 'package:base/src/core/storage/session.dart';
 
 void main() {
   group('DTO and Mapper tests', () {

@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/presentation/paged_cubit.dart';
+import 'package:base/src/core/presentation/paged_cubit.dart';
 
 import '../../domain/entities/demo_item.dart';
 import '../../domain/usecases/get_items_use_case.dart';

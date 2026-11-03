@@ -1,5 +1,5 @@
 import 'package:logger/logger.dart';
-import 'package:pristie/src/core/observability/redactor.dart';
+import 'package:base/src/core/observability/redactor.dart';
 
 /// Severity levels for application log entries.
 enum AppLogLevel {

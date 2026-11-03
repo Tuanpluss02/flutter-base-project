@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/observability/app_logger.dart';
 
 /// Application-wide [BlocObserver] logging state transitions and unhandled exceptions.
 class AppBlocObserver extends BlocObserver {

@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/result/result.dart';
 
 /// Sink for triggering asynchronous session lifecycle transitions.
 abstract interface class SessionStateSink {

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/offline/db/database_key_manager.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/offline/db/database_key_manager.dart';
+import 'package:base/src/core/result/result.dart';
 
 import '../storage/fakes/in_memory_secure_storage.dart';
 import 'offline_test_support.dart';

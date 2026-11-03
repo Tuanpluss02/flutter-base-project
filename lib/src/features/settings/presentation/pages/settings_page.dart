@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/app/injection.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
-import 'package:pristie/src/shared/widgets/app_button.dart';
-import 'package:pristie/src/shared/widgets/app_error_view.dart';
+import 'package:base/src/app/injection.dart';
+import 'package:base/generated/l10n/strings.g.dart';
+import 'package:base/src/shared/widgets/app_button.dart';
+import 'package:base/src/shared/widgets/app_error_view.dart';
 
 import '../cubit/settings_cubit.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/observability/redactor.dart';
+import 'package:base/src/core/observability/redactor.dart';
 
 /// Contract for dispatching uncaught exceptions and crashes to telemetry providers.
 abstract interface class CrashReporter {

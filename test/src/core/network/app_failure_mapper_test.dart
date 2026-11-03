@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/network/app_failure_mapper.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/network/app_failure_mapper.dart';
 
 void main() {
   group('AppFailureMapper', () {

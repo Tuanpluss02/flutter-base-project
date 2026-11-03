@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
-/// Material 3 themes for the Pristie app.
+/// Material 3 themes for the base app.
 final class AppTheme {
   const AppTheme._();
 

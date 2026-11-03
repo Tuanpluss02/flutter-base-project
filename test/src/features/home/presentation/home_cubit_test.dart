@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/presentation/paged_state.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/features/home/domain/entities/demo_item.dart';
-import 'package:pristie/src/features/home/domain/repositories/demo_items_repository.dart';
-import 'package:pristie/src/features/home/domain/usecases/get_items_use_case.dart';
-import 'package:pristie/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/presentation/paged_state.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/features/home/domain/entities/demo_item.dart';
+import 'package:base/src/features/home/domain/repositories/demo_items_repository.dart';
+import 'package:base/src/features/home/domain/usecases/get_items_use_case.dart';
+import 'package:base/src/features/home/presentation/cubit/home_cubit.dart';
 
 final class _ScriptedRepository implements DemoItemsRepository {
   _ScriptedRepository(this.handler);

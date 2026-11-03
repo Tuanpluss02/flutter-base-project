@@ -1,6 +1,6 @@
 # Toolchain & Environment Specifications
 
-This document defines the exact pinned versions of the toolchains, compilers, runtimes, and build tools required to build, test, and verify the Pristie Flutter application.
+This document defines the pinned toolchain and native identity for this Flutter base.
 
 ---
 
@@ -26,7 +26,8 @@ This document defines the exact pinned versions of the toolchains, compilers, ru
 | **Android minSdk** | `24` (Android 7.0+) | `android/app/build.gradle.kts` |
 | **Android compileSdk** | `flutter.compileSdkVersion` | `android/app/build.gradle.kts` |
 | **Android targetSdk** | `flutter.targetSdkVersion` | `android/app/build.gradle.kts` |
-| **Application ID / Namespace** | `com.bolt.pristie` | `android/app/build.gradle.kts` |
+| **Namespace / Production Application ID** | `com.stormx.base` | `android/app/build.gradle.kts` |
+| **Dev / UAT Application IDs** | `com.stormx.base.dev` / `com.stormx.base.uat` | `android/app/build.gradle.kts` |
 
 ---
 
@@ -37,7 +38,8 @@ This document defines the exact pinned versions of the toolchains, compilers, ru
 | **Xcode** | `27.0` (Build `27A266a`) | Host macOS build toolchain |
 | **CocoaPods** | `1.16.2` | Host ruby gem / pod installer |
 | **iOS Deployment Target** | `13.0` | `ios/Runner.xcodeproj/project.pbxproj` |
-| **Bundle Identifier** | `com.bolt.pristie` | `ios/Runner.xcodeproj/project.pbxproj` |
+| **Production Bundle Identifier** | `com.stormx.base` | `ios/Runner.xcodeproj/project.pbxproj` |
+| **Dev / UAT Bundle Identifiers** | `com.stormx.base.dev` / `com.stormx.base.uat` | `ios/Flutter/` xcconfigs |
 | **Keychain Accessibility** | `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly` (`unlocked_this_device`) | `flutter_secure_storage` configuration |
 
 ---

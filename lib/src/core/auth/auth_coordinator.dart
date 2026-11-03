@@ -1,10 +1,10 @@
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/network/token_refresher.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/session.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/network/token_refresher.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/session.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
 
 /// Contract for revoking a refresh token with the remote authorization server on logout.
 abstract interface class LogoutRevoker {

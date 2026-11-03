@@ -58,8 +58,8 @@ class Translations$app$en {
 
 	// Translations
 
-	/// en: 'Pristie'
-	String get name => 'Pristie';
+	/// en: 'Base'
+	String get name => 'Base';
 }
 
 // Path: common
@@ -253,7 +253,7 @@ class Translations$offline$en {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'app.name' => 'Pristie',
+			'app.name' => 'Base',
 			'common.retry' => 'Retry',
 			'common.cancel' => 'Cancel',
 			'common.loading' => 'Loading',

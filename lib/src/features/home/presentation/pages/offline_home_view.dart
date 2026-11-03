@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
-import 'package:pristie/src/shared/widgets/app_empty_view.dart';
-import 'package:pristie/src/shared/widgets/app_error_view.dart';
-import 'package:pristie/src/shared/widgets/app_loading_view.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/generated/l10n/strings.g.dart';
+import 'package:base/src/shared/widgets/app_empty_view.dart';
+import 'package:base/src/shared/widgets/app_error_view.dart';
+import 'package:base/src/shared/widgets/app_loading_view.dart';
 
 import '../cubit/offline_home_cubit.dart';
 import '../cubit/offline_home_state.dart';

@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/secure_storage.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/secure_storage.dart';
 
 /// SecureStorage entry that holds the current database encryption key.
 const databaseKeyStorageKey = 'db_key_v1';

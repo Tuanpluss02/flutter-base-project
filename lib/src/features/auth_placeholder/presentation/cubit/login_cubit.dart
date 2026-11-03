@@ -1,6 +1,6 @@
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/presentation/base_cubit.dart';
-import 'package:pristie/src/core/presentation/base_state.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/presentation/base_cubit.dart';
+import 'package:base/src/core/presentation/base_state.dart';
 
 import '../../domain/usecases/login_use_case.dart';
 

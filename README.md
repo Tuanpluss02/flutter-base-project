@@ -1,6 +1,8 @@
-# Pristie — Flutter Core Base
+# Flutter Base
 
-Pristie is an enterprise-grade Flutter application built with clean architecture, fail-closed security, offline-first sync capability, and multi-environment configuration.
+Reusable Flutter base for Android and iOS. It includes clean architecture, fail-closed configuration, offline sync primitives, and Login/Home/Settings demo features that show how to extend the app.
+
+Starting a new product with an AI coding agent? Follow [Agent Setup Guide](AGENT_SETUP.md).
 
 ---
 
@@ -27,19 +29,19 @@ fvm flutter pub get --enforce-lockfile
 
 Configurations are maintained via `.env` files located in `config/`:
 - `config/env_dev.env`: Development environment (logging enabled)
-- `config/env_stg.env`: Staging environment
+- `config/env_uat.env`: UAT environment
 - `config/env_prod.env`: Production environment (`ENABLE_LOGGING=false` enforced)
 
-Run the app using `--dart-define-from-file`:
+Run the app with a native flavor and its matching config file:
 ```bash
 # Run in development mode
-fvm flutter run --dart-define-from-file=config/env_dev.env
+fvm flutter run --flavor dev --dart-define-from-file=config/env_dev.env
 
-# Run in staging mode
-fvm flutter run --dart-define-from-file=config/env_stg.env
+# Run in UAT mode
+fvm flutter run --flavor uat --dart-define-from-file=config/env_uat.env
 
 # Run in production mode
-fvm flutter run --release --dart-define-from-file=config/env_prod.env
+fvm flutter run --release --flavor prod --dart-define-from-file=config/env_prod.env
 ```
 
 ---

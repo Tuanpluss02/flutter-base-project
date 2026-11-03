@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pristie/src/app/app.dart';
-import 'package:pristie/src/app/bootstrap.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/storage/local_storage.dart';
+import 'package:base/src/app/app.dart';
+import 'package:base/src/app/bootstrap.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/storage/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -14,8 +14,8 @@ void main() {
 
   final validConfig = AppConfig(
     environment: AppEnvironment.dev,
-    apiBaseUrl: Uri.parse('https://api.dev.pristie.com'),
-    appName: 'Pristie Dev',
+    apiBaseUrl: Uri.parse('https://api.dev.base.example'),
+    appName: 'Base Dev',
     enableLogging: true,
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),
@@ -45,7 +45,7 @@ void main() {
 
       expect(renderedApp, isA<App>());
       final app = renderedApp! as App;
-      expect(app.config.appName, 'Pristie Dev');
+      expect(app.config.appName, 'Base Dev');
       expect(app.authState, AuthState.unauthenticated);
 
       // Verify install_marker was written

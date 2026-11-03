@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:pristie/src/app/app_router.gr.dart';
-import 'package:pristie/src/app/guards/auth_guard.dart';
+import 'package:base/src/app/app_router.gr.dart';
+import 'package:base/src/app/guards/auth_guard.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends RootStackRouter {

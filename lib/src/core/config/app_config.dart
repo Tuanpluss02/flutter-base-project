@@ -1,4 +1,4 @@
-enum AppEnvironment { dev, stg, prod }
+enum AppEnvironment { dev, uat, prod }
 
 final class AppConfigException implements Exception {
   const AppConfigException(this.key, this.reason);
@@ -75,7 +75,7 @@ AppConfig parseAppConfig(Map<String, String> values) {
 
   final environment = switch (values['APP_ENV']) {
     'dev' => AppEnvironment.dev,
-    'stg' => AppEnvironment.stg,
+    'uat' => AppEnvironment.uat,
     'prod' => AppEnvironment.prod,
     _ => throw const AppConfigException('APP_ENV', 'unsupported environment'),
   };

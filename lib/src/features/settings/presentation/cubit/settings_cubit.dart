@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/local_storage.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/local_storage.dart';
+import 'package:base/generated/l10n/strings.g.dart';
 
 import '../../domain/usecases/logout_use_case.dart';
 

@@ -1,4 +1,4 @@
-package com.bolt.pristie
+package com.stormx.base
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -13,7 +13,7 @@ import java.io.File
 class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.bolt.pristie/backup_exclusion")
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.stormx.base/backup_exclusion")
             .setMethodCallHandler { call, result ->
                 if (call.method != "excludeFromBackup") {
                     result.notImplemented()

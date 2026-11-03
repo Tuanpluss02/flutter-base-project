@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/secure_session_store.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/secure_session_store.dart';
+import 'package:base/src/core/storage/session.dart';
 
 import 'fakes/in_memory_secure_storage.dart';
 

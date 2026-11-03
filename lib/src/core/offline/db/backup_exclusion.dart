@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/result/result.dart';
 
 /// Marks database files and directories as excluded from OS backups.
 abstract interface class BackupExclusion {

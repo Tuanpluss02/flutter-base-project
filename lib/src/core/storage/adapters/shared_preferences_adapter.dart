@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/storage/local_storage.dart';
+import 'package:base/src/core/storage/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Local preferences storage adapter wrapping [SharedPreferences] for non-sensitive data.

@@ -55,7 +55,7 @@ class _Translations$app$vi extends Translations$app$en {
 	final TranslationsVi _root; // ignore: unused_field
 
 	// Translations
-	@override String get name => 'Pristie';
+	@override String get name => 'Base';
 }
 
 // Path: common
@@ -163,7 +163,7 @@ class _Translations$offline$vi extends Translations$offline$en {
 extension on TranslationsVi {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'app.name' => 'Pristie',
+			'app.name' => 'Base',
 			'common.retry' => 'Thử lại',
 			'common.cancel' => 'Hủy',
 			'common.loading' => 'Đang tải',

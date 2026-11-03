@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
+import 'package:base/src/core/error/app_failure.dart';
 
 import 'sync_conflict.dart';
 

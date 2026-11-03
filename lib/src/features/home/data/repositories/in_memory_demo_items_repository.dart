@@ -1,5 +1,5 @@
-import 'package:pristie/src/core/presentation/paged_state.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/presentation/paged_state.dart';
+import 'package:base/src/core/result/result.dart';
 
 import '../../domain/entities/demo_item.dart';
 import '../../domain/repositories/demo_items_repository.dart';

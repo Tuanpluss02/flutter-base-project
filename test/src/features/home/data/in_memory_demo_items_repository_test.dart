@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/features/home/data/repositories/in_memory_demo_items_repository.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/features/home/data/repositories/in_memory_demo_items_repository.dart';
 
 void main() {
   group('InMemoryDemoItemsRepository', () {

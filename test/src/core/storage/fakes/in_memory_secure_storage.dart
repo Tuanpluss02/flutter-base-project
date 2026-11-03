@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/storage/secure_storage.dart';
+import 'package:base/src/core/storage/secure_storage.dart';
 
 /// In-memory fake implementation of [SecureStorage] with error injection for testing.
 final class InMemorySecureStorage implements SecureStorage {

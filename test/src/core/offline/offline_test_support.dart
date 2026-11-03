@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 
 Future<void> insertItem(
   OfflineDatabase database,

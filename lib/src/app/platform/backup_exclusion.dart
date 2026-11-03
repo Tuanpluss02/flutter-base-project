@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/backup_exclusion.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/backup_exclusion.dart';
+import 'package:base/src/core/result/result.dart';
 
 /// Platform-channel implementation of [BackupExclusion].
 ///
@@ -10,7 +10,7 @@ import 'package:pristie/src/core/result/result.dart';
 final class PlatformBackupExclusion implements BackupExclusion {
   const PlatformBackupExclusion();
 
-  static const _channel = MethodChannel('com.bolt.pristie/backup_exclusion');
+  static const _channel = MethodChannel('com.stormx.base/backup_exclusion');
 
   @override
   Future<Result<void>> excludeFromBackup(String path) async {

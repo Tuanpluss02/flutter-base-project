@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
+import 'package:base/src/core/observability/app_logger.dart';
 import 'package:uuid/uuid.dart';
 
 /// Interceptor recording request performance and response status without logging payloads or credentials.

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/src/core/result/result.dart';
 
 import '../../data/repositories/offline_home_repository.dart';
 import 'offline_home_state.dart';

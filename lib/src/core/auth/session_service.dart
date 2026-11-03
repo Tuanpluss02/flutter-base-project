@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/session.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/session.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
 
 /// Concrete implementation of [AuthSessionController] managing session epochs and authentication lifecycle.
 final class SessionService implements AuthSessionController {

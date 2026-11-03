@@ -1,16 +1,16 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/network/interceptors/auth_interceptor.dart';
-import 'package:pristie/src/core/network/interceptors/error_mapping_interceptor.dart';
-import 'package:pristie/src/core/network/interceptors/logging_interceptor.dart';
-import 'package:pristie/src/core/network/interceptors/retry_interceptor.dart';
-import 'package:pristie/src/core/network/token_refresher.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/network/interceptors/auth_interceptor.dart';
+import 'package:base/src/core/network/interceptors/error_mapping_interceptor.dart';
+import 'package:base/src/core/network/interceptors/logging_interceptor.dart';
+import 'package:base/src/core/network/interceptors/retry_interceptor.dart';
+import 'package:base/src/core/network/token_refresher.dart';
+import 'package:base/src/core/observability/app_logger.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
 
 /// Factory assembling resilient, interceptor-secured [Dio] HTTP clients.
 final class DioFactory {

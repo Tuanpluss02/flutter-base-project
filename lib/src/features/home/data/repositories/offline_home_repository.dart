@@ -2,16 +2,16 @@
 
 import 'dart:convert';
 
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/policy/offline_policy.dart';
-import 'package:pristie/src/core/offline/scope/data_scope_store.dart';
-import 'package:pristie/src/core/offline/sync/sync_coordinator.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_classification.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/policy/offline_policy.dart';
+import 'package:base/src/core/offline/scope/data_scope_store.dart';
+import 'package:base/src/core/offline/sync/sync_coordinator.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_classification.dart';
 
 import '../../domain/entities/demo_item.dart';
 

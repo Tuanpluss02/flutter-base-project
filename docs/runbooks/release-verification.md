@@ -1,6 +1,6 @@
 # Release Verification Runbook
 
-This runbook outlines the required steps to verify and validate a release candidate build of the Pristie Flutter application before distribution.
+This runbook outlines the checks for a production release candidate built from the Flutter base.
 
 ---
 
@@ -41,17 +41,19 @@ bash scripts/ci_local.sh
 
 Build production release binaries using `--dart-define-from-file=config/env_prod.env`:
 
+The base does not include distribution signing credentials. These builds verify the release configuration; configure signing outside Git before distributing an Android AAB or iOS app.
+
 ### 2.1 Android AppBundle (AAB)
 
 ```bash
-fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+fvm flutter build appbundle --release --flavor prod --dart-define-from-file=config/env_prod.env
 ```
-- **Output:** `build/app/outputs/bundle/release/app-release.aab`
+- **Output:** `build/app/outputs/bundle/prodRelease/app-prod-release.aab`
 
 ### 2.2 iOS Release Build
 
 ```bash
-fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env
+fvm flutter build ios --release --no-codesign --flavor prod --dart-define-from-file=config/env_prod.env
 ```
 - **Output:** `build/ios/iphoneos/Runner.app`
 
@@ -65,12 +67,12 @@ Verify that release artifacts contain no hardcoded secrets or insecure configura
 
 1. Extract the generated AAB using `unzip` to a temporary directory:
    ```bash
-   mkdir -p /tmp/pristie-aab-check
-   unzip -q build/app/outputs/bundle/release/app-release.aab -d /tmp/pristie-aab-check
+   mkdir -p /tmp/base-aab-check
+   unzip -q build/app/outputs/bundle/prodRelease/app-prod-release.aab -d /tmp/base-aab-check
    ```
 2. Scan extracted files for credentials/secrets with Gitleaks:
    ```bash
-   gitleaks dir /tmp/pristie-aab-check --redact --exit-code 1
+   gitleaks dir /tmp/base-aab-check --redact --exit-code 1
    ```
 3. Verify merged manifest properties:
    - `android:allowBackup="false"`
@@ -79,7 +81,7 @@ Verify that release artifacts contain no hardcoded secrets or insecure configura
    - `android:networkSecurityConfig` active
 4. Clean up temporary directory:
    ```bash
-   rm -rf /tmp/pristie-aab-check
+   rm -r /tmp/base-aab-check
    ```
 
 ### 3.2 iOS Runner.app Inspection

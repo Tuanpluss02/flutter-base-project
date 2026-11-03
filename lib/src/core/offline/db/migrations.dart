@@ -1,5 +1,5 @@
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
 
 /// Current offline schema version.
 const offlineSchemaVersion = 2;

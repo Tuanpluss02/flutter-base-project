@@ -1,7 +1,7 @@
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/auth/session_state_sink.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/auth/session_state_sink.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/session.dart';
 
 /// Central controller governing authentication state stream, request gate, and session epochs.
 abstract interface class AuthSessionController implements SessionStateSink {

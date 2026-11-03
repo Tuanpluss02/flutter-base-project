@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_worker.dart';
-import 'package:pristie/src/core/offline/policy/offline_config.dart';
-import 'package:pristie/src/core/offline/sync/sync_coordinator.dart';
-import 'package:pristie/src/core/offline/sync/sync_dataset.dart';
-import 'package:pristie/src/core/offline/sync/sync_send_outcome.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/outbox/outbox_worker.dart';
+import 'package:base/src/core/offline/policy/offline_config.dart';
+import 'package:base/src/core/offline/sync/sync_coordinator.dart';
+import 'package:base/src/core/offline/sync/sync_dataset.dart';
+import 'package:base/src/core/offline/sync/sync_send_outcome.dart';
+import 'package:base/src/core/result/result.dart';
 
 import 'fakes/fake_sync_server.dart';
 import 'offline_test_support.dart';

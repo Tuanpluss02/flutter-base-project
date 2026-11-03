@@ -11,12 +11,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:pristie/src/app/pages/not_found_page.dart' as _i3;
-import 'package:pristie/src/features/auth_placeholder/presentation/pages/login_page.dart'
+import 'package:base/src/app/pages/not_found_page.dart' as _i3;
+import 'package:base/src/features/auth_placeholder/presentation/pages/login_page.dart'
     as _i2;
-import 'package:pristie/src/features/home/presentation/pages/home_page.dart'
+import 'package:base/src/features/home/presentation/pages/home_page.dart'
     as _i1;
-import 'package:pristie/src/features/settings/presentation/pages/settings_page.dart'
+import 'package:base/src/features/settings/presentation/pages/settings_page.dart'
     as _i4;
 
 /// generated route for

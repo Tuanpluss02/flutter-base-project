@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 
 /// Tracks the active [DataScope] and fences work started under a previous one.
 final class DataScopeStore {

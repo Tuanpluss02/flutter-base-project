@@ -1,4 +1,4 @@
-import 'package:pristie/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
 /// Adapts one SQLCipher [Database] to the package-neutral executor contract.

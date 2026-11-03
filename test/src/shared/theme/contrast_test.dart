@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/shared/theme/app_colors.dart';
-import 'package:pristie/src/shared/theme/app_theme.dart';
+import 'package:base/src/shared/theme/app_colors.dart';
+import 'package:base/src/shared/theme/app_theme.dart';
 
 double _contrastRatio(Color foreground, Color background) {
   final foregroundLuminance = foreground.computeLuminance();

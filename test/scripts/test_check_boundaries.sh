@@ -52,7 +52,7 @@ assert_success "Baseline boundary check passes" scripts/check_boundaries.sh
 # 2. Core importing features via package URI
 mkdir -p "$FIXTURE_DIR/lib/src/core"
 cat <<'EOF' > "$FIXTURE_DIR/lib/src/core/test_violation.dart"
-import 'package:pristie/src/features/home/home.dart';
+import 'package:base/src/features/home/home.dart';
 EOF
 assert_failure "Boundary check fails when lib/src/core imports features via package:" check_fixture_boundaries
 rm "$FIXTURE_DIR/lib/src/core/test_violation.dart"
@@ -67,7 +67,7 @@ rm "$FIXTURE_DIR/lib/src/core/test_relative_violation.dart"
 # 4. Feature domain cross-import
 mkdir -p "$FIXTURE_DIR/lib/src/features/feature_a/domain"
 cat <<'EOF' > "$FIXTURE_DIR/lib/src/features/feature_a/domain/sample.dart"
-import 'package:pristie/src/features/feature_b/domain/other.dart';
+import 'package:base/src/features/feature_b/domain/other.dart';
 EOF
 assert_failure "Boundary check fails when feature domain imports another feature" check_fixture_boundaries
 rm -r "$FIXTURE_DIR/lib/src/features/feature_a"
@@ -75,7 +75,7 @@ rm -r "$FIXTURE_DIR/lib/src/features/feature_a"
 # 5. Feature presentation cross-import
 mkdir -p "$FIXTURE_DIR/lib/src/features/feature_a/presentation"
 cat <<'EOF' > "$FIXTURE_DIR/lib/src/features/feature_a/presentation/sample_page.dart"
-import 'package:pristie/src/features/feature_b/presentation/other_page.dart';
+import 'package:base/src/features/feature_b/presentation/other_page.dart';
 EOF
 assert_failure "Boundary check fails when feature presentation imports another feature" check_fixture_boundaries
 rm -r "$FIXTURE_DIR/lib/src/features/feature_a"
@@ -84,7 +84,7 @@ rm -r "$FIXTURE_DIR/lib/src/features/feature_a"
 mkdir -p "$FIXTURE_DIR/lib/src/features/_template"
 cat <<'EOF' > "$FIXTURE_DIR/lib/src/features/_template/README.md"
 # Template feature
-References package:pristie/src/features/ in doc example.
+References package:base/src/features/ in doc example.
 EOF
 assert_success "Boundary check passes with _template/README.md" check_fixture_boundaries
 rm -r "$FIXTURE_DIR/lib/src/features/_template"

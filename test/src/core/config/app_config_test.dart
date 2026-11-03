@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/config/app_config.dart';
+import 'package:base/src/core/config/app_config.dart';
 
 void main() {
   group('parseAppConfig', () {
@@ -60,19 +60,25 @@ void main() {
       final config = parseAppConfig(_validValues());
 
       expect(config.environment, AppEnvironment.dev);
-      expect(config.apiBaseUrl, Uri.parse('https://api.dev.pristie.example'));
+      expect(config.apiBaseUrl, Uri.parse('https://api.dev.base.example'));
       expect(config.enableLogging, isTrue);
       expect(config.connectTimeout, const Duration(milliseconds: 15000));
       expect(config.receiveTimeout, const Duration(milliseconds: 30000));
       expect(config.sendTimeout, const Duration(milliseconds: 30000));
+    });
+
+    test('parses UAT config', () {
+      final values = _validValues()..['APP_ENV'] = 'uat';
+
+      expect(parseAppConfig(values).environment, AppEnvironment.uat);
     });
   });
 }
 
 Map<String, String> _validValues() => {
   'APP_ENV': 'dev',
-  'API_BASE_URL': 'https://api.dev.pristie.example',
-  'APP_NAME': 'Pristie Dev',
+  'API_BASE_URL': 'https://api.dev.base.example',
+  'APP_NAME': 'Base Dev',
   'ENABLE_LOGGING': 'true',
   'CONNECT_TIMEOUT_MS': '15000',
   'RECEIVE_TIMEOUT_MS': '30000',

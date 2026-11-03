@@ -14,7 +14,7 @@ echo "Checking architectural boundaries..."
 
 # 1. lib/src/core must not import lib/src/features
 if [ -d "lib/src/core" ]; then
-  if rg -n "package:pristie/src/features/|src/features/" lib/src/core 2>/dev/null; then
+  if rg -n "package:base/src/features/|src/features/" lib/src/core 2>/dev/null; then
     echo "ERROR: lib/src/core must not import features!" >&2
     FAILED=1
   fi
@@ -26,7 +26,7 @@ feature_dirs=(lib/src/features/*/domain lib/src/features/*/presentation)
 shopt -u nullglob
 
 if [ ${#feature_dirs[@]} -gt 0 ]; then
-  matches=$( (rg -n "package:pristie/src/features/" "${feature_dirs[@]}" 2>/dev/null || true) | (rg -v "features/.*_template" || true) )
+  matches=$( (rg -n "package:base/src/features/" "${feature_dirs[@]}" 2>/dev/null || true) | (rg -v "features/.*_template" || true) )
   if [ -n "$matches" ]; then
     echo "$matches" >&2
     echo "ERROR: Features must not import other features in domain or presentation!" >&2

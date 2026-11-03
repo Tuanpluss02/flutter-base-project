@@ -1,6 +1,6 @@
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/session.dart';
 
 final class LoginUseCase {
   const LoginUseCase(this._sessionController);

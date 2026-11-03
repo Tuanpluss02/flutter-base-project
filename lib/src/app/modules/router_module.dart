@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:pristie/src/app/app_router.dart';
-import 'package:pristie/src/app/guards/auth_guard.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/app/app_router.dart';
+import 'package:base/src/app/guards/auth_guard.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
 
 @module
 abstract class RouterModule {

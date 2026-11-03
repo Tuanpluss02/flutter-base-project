@@ -5,16 +5,16 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/network/dio_factory.dart';
-import 'package:pristie/src/core/network/token_refresher.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/secure_session_store.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/network/dio_factory.dart';
+import 'package:base/src/core/network/token_refresher.dart';
+import 'package:base/src/core/observability/app_logger.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/secure_session_store.dart';
+import 'package:base/src/core/storage/session.dart';
 
 import '../storage/fakes/in_memory_secure_storage.dart';
 
@@ -103,8 +103,8 @@ void main() {
     setUp(() async {
       devConfig = AppConfig(
         environment: AppEnvironment.dev,
-        apiBaseUrl: Uri.parse('https://api.dev.pristie.example'),
-        appName: 'Pristie Dev',
+        apiBaseUrl: Uri.parse('https://api.dev.base.example'),
+        appName: 'Base Dev',
         enableLogging: true,
         connectTimeout: const Duration(seconds: 15),
         receiveTimeout: const Duration(seconds: 30),

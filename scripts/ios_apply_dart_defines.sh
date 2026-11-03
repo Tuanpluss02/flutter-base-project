@@ -3,9 +3,9 @@ set -euo pipefail
 
 env_name="${1:-}"
 case "$env_name" in
-  dev|stg|prod) ;;
+  dev|uat|prod) ;;
   *)
-    echo "Usage: $0 dev|stg|prod" >&2
+    echo "Usage: $0 dev|uat|prod" >&2
     exit 2
     ;;
 esac

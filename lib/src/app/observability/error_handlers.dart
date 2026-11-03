@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/observability/crash_reporter.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/observability/crash_reporter.dart';
 
 /// Installs top-level error boundaries routing uncaught exceptions to [reporter].
 void installErrorHandlers(CrashReporter reporter) {

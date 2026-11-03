@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/offline/db/impl/sqlcipher_offline_database.dart';
-import 'package:pristie/src/core/offline/db/database_key_manager.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/policy/offline_config.dart';
-import 'package:pristie/src/core/offline/scope/data_scope_store.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/offline/db/impl/sqlcipher_offline_database.dart';
+import 'package:base/src/core/offline/db/database_key_manager.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/policy/offline_config.dart';
+import 'package:base/src/core/offline/scope/data_scope_store.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 
 import '../storage/fakes/in_memory_secure_storage.dart';
 import 'fakes/fake_offline_database.dart';
@@ -24,7 +24,7 @@ void main() {
   late SqlcipherOfflineDatabase database;
 
   setUp(() async {
-    tempDir = await Directory.systemTemp.createTemp('pristie_scope_');
+    tempDir = await Directory.systemTemp.createTemp('base_scope_');
     scopeStore = DataScopeStore();
     database = SqlcipherOfflineDatabase(
       DatabaseKeyManager(InMemorySecureStorage()),

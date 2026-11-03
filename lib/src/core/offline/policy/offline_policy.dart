@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pristie/src/core/scope/data_classification.dart';
+import 'package:base/src/core/scope/data_classification.dart';
 
 part '../../../../generated/src/core/offline/policy/offline_policy.freezed.dart';
 

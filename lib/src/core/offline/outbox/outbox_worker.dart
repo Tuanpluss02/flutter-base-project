@@ -3,17 +3,17 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/policy/offline_config.dart';
-import 'package:pristie/src/core/offline/policy/offline_policy.dart';
-import 'package:pristie/src/core/offline/scope/data_scope_store.dart';
-import 'package:pristie/src/core/offline/sync/sync_conflict.dart';
-import 'package:pristie/src/core/offline/sync/sync_send_outcome.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/policy/offline_config.dart';
+import 'package:base/src/core/offline/policy/offline_policy.dart';
+import 'package:base/src/core/offline/scope/data_scope_store.dart';
+import 'package:base/src/core/offline/sync/sync_conflict.dart';
+import 'package:base/src/core/offline/sync/sync_send_outcome.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 import 'package:uuid/uuid.dart';
 
 /// Sends one claimed operation to the backend adapter.

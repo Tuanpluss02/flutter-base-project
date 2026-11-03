@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/app/app.dart';
-import 'package:pristie/src/app/app_router.dart';
-import 'package:pristie/src/app/guards/auth_guard.dart';
-import 'package:pristie/src/app/injection.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/local_storage.dart';
-import 'package:pristie/src/core/storage/secure_session_store.dart';
-import 'package:pristie/src/features/auth_placeholder/auth_placeholder.dart';
-import 'package:pristie/src/features/auth_placeholder/presentation/pages/login_page.dart';
-import 'package:pristie/src/features/home/home.dart';
-import 'package:pristie/src/features/home/presentation/pages/home_page.dart';
-import 'package:pristie/src/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:pristie/src/features/settings/presentation/pages/settings_page.dart';
-import 'package:pristie/src/features/settings/settings.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
+import 'package:base/src/app/app.dart';
+import 'package:base/src/app/app_router.dart';
+import 'package:base/src/app/guards/auth_guard.dart';
+import 'package:base/src/app/injection.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/local_storage.dart';
+import 'package:base/src/core/storage/secure_session_store.dart';
+import 'package:base/src/features/auth_placeholder/auth_placeholder.dart';
+import 'package:base/src/features/auth_placeholder/presentation/pages/login_page.dart';
+import 'package:base/src/features/home/home.dart';
+import 'package:base/src/features/home/presentation/pages/home_page.dart';
+import 'package:base/src/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:base/src/features/settings/presentation/pages/settings_page.dart';
+import 'package:base/src/features/settings/settings.dart';
+import 'package:base/generated/l10n/strings.g.dart';
 
 import '../core/storage/fakes/in_memory_secure_storage.dart';
 import 'support/fakes.dart';
@@ -29,8 +29,8 @@ void main() {
 
   final config = AppConfig(
     environment: AppEnvironment.dev,
-    apiBaseUrl: Uri.parse('https://api.dev.pristie.example'),
-    appName: 'Pristie Test',
+    apiBaseUrl: Uri.parse('https://api.dev.base.example'),
+    appName: 'Base Test',
     enableLogging: false,
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),

@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/presentation/base_state.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/features/auth_placeholder/domain/usecases/login_use_case.dart';
-import 'package:pristie/src/features/auth_placeholder/presentation/cubit/login_cubit.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/presentation/base_state.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/features/auth_placeholder/domain/usecases/login_use_case.dart';
+import 'package:base/src/features/auth_placeholder/presentation/cubit/login_cubit.dart';
 
 import '../../support/fakes.dart';
 

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/secure_storage.dart';
-import 'package:pristie/src/core/storage/session.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/secure_storage.dart';
+import 'package:base/src/core/storage/session.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
 
 /// Secure storage implementation of [SessionTokenProvider] storing an atomic [SessionRecord].
 final class SecureSessionStore implements SessionTokenProvider {

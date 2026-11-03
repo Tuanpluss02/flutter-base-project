@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/app/app_router.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
+import 'package:base/src/app/app_router.dart';
+import 'package:base/generated/l10n/strings.g.dart';
 
 /// Pumps a routed feature app with translations and a fixed logical viewport.
 Future<void> pumpRouterApp(

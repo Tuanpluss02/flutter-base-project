@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pristie/src/app/app_router.gr.dart';
-import 'package:pristie/src/app/injection.dart';
-import 'package:pristie/src/core/presentation/paged_state.dart';
-import 'package:pristie/generated/l10n/strings.g.dart';
-import 'package:pristie/src/shared/widgets/app_button.dart';
-import 'package:pristie/src/shared/widgets/app_empty_view.dart';
-import 'package:pristie/src/shared/widgets/app_error_view.dart';
-import 'package:pristie/src/shared/widgets/app_loading_view.dart';
+import 'package:base/src/app/app_router.gr.dart';
+import 'package:base/src/app/injection.dart';
+import 'package:base/src/core/presentation/paged_state.dart';
+import 'package:base/generated/l10n/strings.g.dart';
+import 'package:base/src/shared/widgets/app_button.dart';
+import 'package:base/src/shared/widgets/app_empty_view.dart';
+import 'package:base/src/shared/widgets/app_error_view.dart';
+import 'package:base/src/shared/widgets/app_loading_view.dart';
 
 import '../../domain/entities/demo_item.dart';
 import '../cubit/home_cubit.dart';

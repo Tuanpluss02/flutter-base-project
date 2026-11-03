@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pristie/src/app/network/api_token_refresher.dart';
-import 'package:pristie/src/core/auth/auth_coordinator.dart';
-import 'package:pristie/src/core/auth/auth_session_controller.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/auth/session_state_sink.dart';
-import 'package:pristie/src/core/config/app_config.dart';
-import 'package:pristie/src/core/network/api_client.dart';
-import 'package:pristie/src/core/network/dio_factory.dart';
-import 'package:pristie/src/core/network/token_refresher.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
-import 'package:pristie/src/core/observability/crash_reporter.dart';
-import 'package:pristie/src/core/storage/session_token_provider.dart';
+import 'package:base/src/app/network/api_token_refresher.dart';
+import 'package:base/src/core/auth/auth_coordinator.dart';
+import 'package:base/src/core/auth/auth_session_controller.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/auth/session_state_sink.dart';
+import 'package:base/src/core/config/app_config.dart';
+import 'package:base/src/core/network/api_client.dart';
+import 'package:base/src/core/network/dio_factory.dart';
+import 'package:base/src/core/network/token_refresher.dart';
+import 'package:base/src/core/observability/app_logger.dart';
+import 'package:base/src/core/observability/crash_reporter.dart';
+import 'package:base/src/core/storage/session_token_provider.dart';
 
 @module
 abstract class NetworkModule {

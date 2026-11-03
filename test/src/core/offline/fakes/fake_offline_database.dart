@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:pristie/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
 
 /// In-memory table used by the fake SQL engine.
 final class FakeTable {

@@ -1,5 +1,5 @@
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/storage/session.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/storage/session.dart';
 
 /// Contract providing atomic access and lifecycle mutations for session credentials.
 abstract interface class SessionTokenProvider {

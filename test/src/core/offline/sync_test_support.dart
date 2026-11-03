@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:pristie/src/core/offline/db/database_key_manager.dart';
-import 'package:pristie/src/core/offline/db/impl/sqlcipher_offline_database.dart';
-import 'package:pristie/src/core/offline/db/offline_database.dart';
-import 'package:pristie/src/core/offline/db/tables.dart';
-import 'package:pristie/src/core/offline/outbox/outbox_operation.dart';
-import 'package:pristie/src/core/offline/policy/offline_config.dart';
-import 'package:pristie/src/core/offline/policy/offline_policy.dart';
-import 'package:pristie/src/core/offline/scope/data_scope_store.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/core/scope/data_classification.dart';
-import 'package:pristie/src/core/scope/data_scope.dart';
+import 'package:base/src/core/offline/db/database_key_manager.dart';
+import 'package:base/src/core/offline/db/impl/sqlcipher_offline_database.dart';
+import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:base/src/core/offline/db/tables.dart';
+import 'package:base/src/core/offline/outbox/outbox_operation.dart';
+import 'package:base/src/core/offline/policy/offline_config.dart';
+import 'package:base/src/core/offline/policy/offline_policy.dart';
+import 'package:base/src/core/offline/scope/data_scope_store.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/core/scope/data_classification.dart';
+import 'package:base/src/core/scope/data_scope.dart';
 
 import '../storage/fakes/in_memory_secure_storage.dart';
 import 'fakes/fake_offline_database.dart';
@@ -62,7 +62,7 @@ final class OfflineHarness {
   String? databasePath;
 
   Future<void> setUp() async {
-    tempDir = await Directory.systemTemp.createTemp('pristie_sync_');
+    tempDir = await Directory.systemTemp.createTemp('base_sync_');
     databasePath =
         '${tempDir.path}/${SqlcipherOfflineDatabase.databaseFileName}';
     storage = InMemorySecureStorage();

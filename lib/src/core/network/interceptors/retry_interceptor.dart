@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
+import 'package:base/src/core/error/app_failure.dart';
 
 /// Signature for asynchronous delay function used during backoff.
 typedef DelayFunction = Future<void> Function(Duration duration);

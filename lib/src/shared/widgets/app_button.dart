@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pristie/generated/l10n/strings.g.dart';
+import 'package:base/generated/l10n/strings.g.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({

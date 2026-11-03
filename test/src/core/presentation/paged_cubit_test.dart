@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/presentation/paged_cubit.dart';
-import 'package:pristie/src/core/presentation/paged_state.dart';
-import 'package:pristie/src/core/result/result.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/presentation/paged_cubit.dart';
+import 'package:base/src/core/presentation/paged_state.dart';
+import 'package:base/src/core/result/result.dart';
 
 void main() {
   group('PagedCubit', () {

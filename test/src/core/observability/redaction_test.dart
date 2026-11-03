@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/observability/app_logger.dart';
-import 'package:pristie/src/core/observability/redactor.dart';
+import 'package:base/src/core/observability/app_logger.dart';
+import 'package:base/src/core/observability/redactor.dart';
 
 void main() {
   group('Redactor', () {

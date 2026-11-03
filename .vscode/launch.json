@@ -2,84 +2,84 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Pristie Dev (debug)",
+      "name": "Base Dev (debug)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_dev.env"],
+      "args": ["--flavor", "dev", "--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "debug"
     },
     {
-      "name": "Pristie Dev (profile)",
+      "name": "Base Dev (profile)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_dev.env"],
+      "args": ["--flavor", "dev", "--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "profile"
     },
     {
-      "name": "Pristie Dev (release)",
+      "name": "Base Dev (release)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_dev.env"],
+      "args": ["--flavor", "dev", "--dart-define-from-file=config/env_dev.env"],
       "flutterMode": "release"
     },
     {
-      "name": "Pristie Staging (debug)",
+      "name": "Base UAT (debug)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_stg.env"],
+      "args": ["--flavor", "uat", "--dart-define-from-file=config/env_uat.env"],
       "flutterMode": "debug"
     },
     {
-      "name": "Pristie Staging (profile)",
+      "name": "Base UAT (profile)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_stg.env"],
+      "args": ["--flavor", "uat", "--dart-define-from-file=config/env_uat.env"],
       "flutterMode": "profile"
     },
     {
-      "name": "Pristie Staging (release)",
+      "name": "Base UAT (release)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_stg.env"],
+      "args": ["--flavor", "uat", "--dart-define-from-file=config/env_uat.env"],
       "flutterMode": "release"
     },
     {
-      "name": "Pristie Prod (debug)",
+      "name": "Base Prod (debug)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_prod.env"],
+      "args": ["--flavor", "prod", "--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "debug"
     },
     {
-      "name": "Pristie Prod (profile)",
+      "name": "Base Prod (profile)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_prod.env"],
+      "args": ["--flavor", "prod", "--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "profile"
     },
     {
-      "name": "Pristie Prod (release)",
+      "name": "Base Prod (release)",
       "type": "dart",
       "request": "launch",
       "program": "${workspaceFolder}/lib/main.dart",
       "cwd": "${workspaceFolder}",
-      "args": ["--dart-define-from-file=config/env_prod.env"],
+      "args": ["--flavor", "prod", "--dart-define-from-file=config/env_prod.env"],
       "flutterMode": "release"
     }
   ]

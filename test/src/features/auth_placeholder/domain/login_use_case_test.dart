@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pristie/src/core/auth/auth_state.dart';
-import 'package:pristie/src/core/auth/session_service.dart';
-import 'package:pristie/src/core/error/app_failure.dart';
-import 'package:pristie/src/core/result/result.dart';
-import 'package:pristie/src/features/auth_placeholder/domain/usecases/login_use_case.dart';
+import 'package:base/src/core/auth/auth_state.dart';
+import 'package:base/src/core/auth/session_service.dart';
+import 'package:base/src/core/error/app_failure.dart';
+import 'package:base/src/core/result/result.dart';
+import 'package:base/src/features/auth_placeholder/domain/usecases/login_use_case.dart';
 
 import '../../support/fakes.dart';
 

@@ -79,7 +79,12 @@ jobs:
       - name: Build Android App Bundle (Prod)
         run: |
           fvm flutter pub get --enforce-lockfile
-          fvm flutter build appbundle --release --dart-define-from-file=config/env_prod.env
+          fvm flutter build appbundle --release --flavor prod --dart-define-from-file=config/env_prod.env
+
+      - name: Build Android Dev and UAT flavors
+        run: |
+          fvm flutter build apk --debug --flavor dev --dart-define-from-file=config/env_dev.env
+          fvm flutter build apk --debug --flavor uat --dart-define-from-file=config/env_uat.env
 
       - name: Install Gitleaks 8.30.1 for Artifact Scan
         run: |
@@ -89,7 +94,7 @@ jobs:
       - name: Unpack and Scan Android Artifact for Leaks
         run: |
           mkdir -p /tmp/unpacked-aab
-          unzip -q build/app/outputs/bundle/release/app-release.aab -d /tmp/unpacked-aab || unzip -q build/app/outputs/bundle/*/*.aab -d /tmp/unpacked-aab
+          unzip -q build/app/outputs/bundle/prodRelease/app-prod-release.aab -d /tmp/unpacked-aab
           gitleaks dir /tmp/unpacked-aab --redact --exit-code 1
 
   ios:
@@ -115,4 +120,9 @@ jobs:
       - name: Build iOS Release (Prod, No Codesign)
         run: |
           fvm flutter pub get --enforce-lockfile
-          fvm flutter build ios --release --no-codesign --dart-define-from-file=config/env_prod.env
+          fvm flutter build ios --release --no-codesign --flavor prod --dart-define-from-file=config/env_prod.env
+
+      - name: Validate iOS Dev and UAT flavor configurations
+        run: |
+          fvm flutter build ios --config-only --flavor dev --dart-define-from-file=config/env_dev.env
+          fvm flutter build ios --config-only --flavor uat --dart-define-from-file=config/env_uat.env
