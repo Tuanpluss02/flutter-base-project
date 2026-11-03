@@ -127,5 +127,5 @@ jobs:
 
       - name: Validate iOS Dev and UAT flavor configurations
         run: |
-          fvm flutter build ios --config-only --flavor dev --dart-define-from-file=config/env_dev.env
-          fvm flutter build ios --config-only --flavor uat --dart-define-from-file=config/env_uat.env
+          fvm flutter build ios --config-only --no-codesign --flavor dev --dart-define-from-file=config/env_dev.env
+          fvm flutter build ios --config-only --no-codesign --flavor uat --dart-define-from-file=config/env_uat.env
