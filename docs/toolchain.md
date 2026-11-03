@@ -19,10 +19,10 @@ This document defines the pinned toolchain and native identity for this Flutter 
 
 | Component | Pinned Version | Source File |
 |---|---|---|
-| **JDK** | OpenJDK `17.0.15` | Required Java runtime for Gradle 8.14 |
-| **Gradle** | `8.14` | `android/gradle/wrapper/gradle-wrapper.properties` |
-| **Android Gradle Plugin (AGP)** | `8.11.1` | `android/settings.gradle.kts` |
-| **Kotlin Gradle Plugin** | `2.2.20` | `android/settings.gradle.kts` |
+| **JDK** | OpenJDK `17.0.15` | Required Java runtime for AGP 9.0.1 |
+| **Gradle** | `9.1.0` | `android/gradle/wrapper/gradle-wrapper.properties` |
+| **Android Gradle Plugin (AGP)** | `9.0.1` | `android/settings.gradle.kts` |
+| **Kotlin Gradle Plugin** | `2.4.10` (version declared for Flutter validation; app uses built-in Kotlin) | `android/settings.gradle.kts`, `android/gradle.properties` |
 | **Android minSdk** | `24` (Android 7.0+) | `android/app/build.gradle.kts` |
 | **Android compileSdk** | `flutter.compileSdkVersion` | `android/app/build.gradle.kts` |
 | **Android targetSdk** | `flutter.targetSdkVersion` | `android/app/build.gradle.kts` |

@@ -1,54 +1,61 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:base/src/core/offline/db/impl/sqlcipher_offline_database.dart';
 import 'package:base/src/core/offline/db/offline_database.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
+  late Directory directory;
+  late String path;
 
-  const channel = MethodChannel('com.davidmartos96.sqflite_sqlcipher');
-  final messenger =
-      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
-
-  tearDown(() {
-    messenger.setMockMethodCallHandler(channel, null);
+  setUp(() async {
+    directory = await Directory.systemTemp.createTemp('base_sqlcipher_');
+    path = '${directory.path}/encrypted.db';
   });
 
-  test('forwards the encryption key as the SQLCipher password', () async {
-    Map<String, Object?>? openArguments;
-    messenger.setMockMethodCallHandler(channel, (call) async {
-      switch (call.method) {
-        case 'openDatabase':
-          openArguments = Map<String, Object?>.from(
-            call.arguments as Map<Object?, Object?>,
-          );
-          return 1;
-        case 'query':
-          return <Map<String, Object?>>[
-            <String, Object?>{'user_version': 0},
-          ];
-        case 'execute':
-        case 'closeDatabase':
-          return null;
-      }
-      return null;
-    });
+  tearDown(() async {
+    if (await directory.exists()) await directory.delete(recursive: true);
+  });
 
-    final database = await openSqlcipherConnection(
-      path: '/tmp/base_encrypted.db',
-      password: 'base64-encoded-key',
-      version: 1,
-      onCreate: (OfflineDatabaseExecutor db) async {},
-      onUpgrade: (
-        OfflineDatabaseExecutor db,
-        int oldVersion,
-        int newVersion,
-      ) async {},
-    );
+  Future<OfflineDatabaseConnection> open(int keyByte) =>
+      openSqlcipherConnection(
+        path: path,
+        password: base64Encode(List<int>.filled(32, keyByte)),
+        version: 1,
+        onCreate: (db) => db.execute('CREATE TABLE records (value TEXT)'),
+        onUpgrade: (db, oldVersion, newVersion) async {},
+      );
 
-    expect(openArguments, isNotNull);
-    expect(openArguments!['path'], '/tmp/base_encrypted.db');
-    expect(openArguments!['password'], 'base64-encoded-key');
+  test('encrypts on disk and rejects the wrong key', () async {
+    final database = await open(1);
+    await database.insert('records', {'value': 'private-value'});
     await database.close();
+
+    final header = await File(path).openRead(0, 16).first;
+    expect(header, isNot('SQLite format 3\u0000'.codeUnits));
+    await expectLater(open(2), throwsA(isA<Exception>()));
+
+    final reopened = await open(1);
+    expect(await reopened.query('records'), [
+      {'value': 'private-value'},
+    ]);
+    await reopened.close();
+  });
+
+  test('rekeys the encrypted file', () async {
+    final database = await open(1);
+    await database.insert('records', {'value': 'private-value'});
+    await database.execute(
+      "PRAGMA rekey = '${base64Encode(List<int>.filled(32, 2))}'",
+    );
+    await database.close();
+
+    await expectLater(open(1), throwsA(isA<Exception>()));
+    final reopened = await open(2);
+    expect(await reopened.query('records'), [
+      {'value': 'private-value'},
+    ]);
+    await reopened.close();
   });
 }

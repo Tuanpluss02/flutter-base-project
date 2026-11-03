@@ -30,8 +30,14 @@ dependencies:
   intl: 0.20.3
   uuid: 4.6.0
   crypto: 3.0.8
-  sqflite_sqlcipher: 3.4.1
+  sqflite_common_ffi: 2.4.5
+  sqlite3: 3.8.0
   path_provider: 2.1.6
+
+hooks:
+  user_defines:
+    sqlite3:
+      source: sqlcipher
 
 dev_dependencies:
   flutter_test:

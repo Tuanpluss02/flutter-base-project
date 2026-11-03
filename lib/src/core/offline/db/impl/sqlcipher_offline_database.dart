@@ -14,7 +14,7 @@ import 'package:base/src/core/offline/policy/offline_config.dart';
 import 'package:base/src/core/offline/scope/data_scope_store.dart';
 import 'package:base/src/core/result/result.dart';
 import 'package:base/src/core/scope/data_scope.dart';
-import 'package:sqflite_sqlcipher/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 /// SQLCipher-backed [OfflineDatabase].
 ///
@@ -310,15 +310,29 @@ Future<OfflineDatabaseConnection> openSqlcipherConnection({
   )
   onUpgrade,
 }) async {
-  final database = await openDatabase(
+  final key = base64Decode(password);
+  if (key.length != databaseKeyLength) {
+    throw ArgumentError.value(key.length, 'password', 'Invalid key length');
+  }
+  final safePassword = base64Encode(key);
+  final database = await databaseFactoryFfi.openDatabase(
     path,
-    password: password,
-    version: version,
-    onCreate: (db, _) => onCreate(SqlcipherConnection(db)),
-    onUpgrade: (db, oldVersion, newVersion) =>
-        onUpgrade(SqlcipherConnection(db), oldVersion, newVersion),
-    onDowngrade: (db, oldVersion, newVersion) =>
-        throw StateError('Offline schema downgrade is unsupported'),
+    options: OpenDatabaseOptions(
+      version: version,
+      onConfigure: (db) async {
+        final cipher = await db.rawQuery('PRAGMA cipher_version');
+        if (cipher.isEmpty || cipher.first.values.firstOrNull == null) {
+          throw StateError('SQLCipher is unavailable');
+        }
+        await db.execute("PRAGMA key = '$safePassword'");
+        await db.rawQuery('SELECT count(*) FROM sqlite_master');
+      },
+      onCreate: (db, _) => onCreate(SqlcipherConnection(db)),
+      onUpgrade: (db, oldVersion, newVersion) =>
+          onUpgrade(SqlcipherConnection(db), oldVersion, newVersion),
+      onDowngrade: (db, oldVersion, newVersion) =>
+          throw StateError('Offline schema downgrade is unsupported'),
+    ),
   );
   return SqlcipherConnection(database);
 }

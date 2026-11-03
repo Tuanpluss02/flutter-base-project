@@ -1,5 +1,5 @@
 import 'package:base/src/core/offline/db/offline_database.dart';
-import 'package:sqflite_sqlcipher/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 /// Adapts one SQLCipher [Database] to the package-neutral executor contract.
 final class SqlcipherConnection implements OfflineDatabaseConnection {

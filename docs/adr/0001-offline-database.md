@@ -1,5 +1,18 @@
 # ADR 0001: Offline Encrypted Local Database Selection
 
+## Amendment — 2026-11-03
+
+Flutter 3.47.8 warns that `sqflite_sqlcipher` does not support Swift Package
+Manager and that this will become an error. The original decision below records
+the 2026-10-31 evaluation; the current implementation uses
+`sqflite_common_ffi: 2.4.5` with `sqlite3: 3.8.0` and the `sqlcipher` native
+asset build hook on Android and iOS. The existing `OfflineDatabase` contract,
+schema, and key lifecycle remain in place. The opener checks `cipher_version`
+before setting the key or creating schema, so a build using ordinary SQLite
+fails closed instead of writing plaintext. A real FFI test verifies ciphertext
+on disk, wrong-key rejection, and rekey. Existing on-device databases created
+with SQLCipher 4 must be checked with the new library during release validation.
+
 - **Status:** Accepted
 - **Date:** 2026-10-31
 - **Deciders:** Mobile Core Team, Security Reviewer
