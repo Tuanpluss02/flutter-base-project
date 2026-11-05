@@ -1,8 +1,0 @@
-# Offline spike build and local artifacts
-.dart_tool/
-.packages
-build/
-*.db
-*.db-shm
-*.db-wal
-pubspec.lock

@@ -1,1 +1,0 @@
-enum DataClassification { s0, s1, s2, s3 }

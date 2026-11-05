@@ -1,4 +1,0 @@
-#include "Release.xcconfig"
-
-APP_DISPLAY_NAME = Base UAT
-PRODUCT_BUNDLE_IDENTIFIER = com.stormx.base.uat
